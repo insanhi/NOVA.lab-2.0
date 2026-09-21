@@ -67,24 +67,28 @@ function VacuumVisualizer() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       {/* 2-Room Interactive Canvas */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', minHeight: '220px', backgroundColor: '#0f172a', padding: '1.25rem', borderRadius: '16px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', minHeight: '240px', backgroundColor: '#f1f5f9', padding: '1.25rem', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
         {['A', 'B'].map((room) => (
           <div
             key={room}
             onClick={(e) => addDust(room, e)}
-            style={{ border: '2px dashed #334155', borderRadius: '12px', position: 'relative', backgroundColor: '#1e293b', cursor: 'crosshair', minHeight: '200px' }}
+            style={{
+              border: '2px dashed #cbd5e1', borderRadius: '12px', position: 'relative',
+              backgroundColor: '#ffffff', cursor: 'crosshair', minHeight: '200px',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.04)'
+            }}
           >
-            <span style={{ position: 'absolute', top: '10px', left: '12px', color: '#94a3b8', fontWeight: '700', fontSize: '0.8rem', fontFamily: 'var(--font-mono)' }}>
+            <span style={{ position: 'absolute', top: '10px', left: '12px', color: '#64748b', fontWeight: '700', fontSize: '0.8rem', fontFamily: 'var(--font-mono)' }}>
               ROOM {room} ({dustParticles[room].length} Dust)
             </span>
 
             {dustParticles[room].map((d) => (
-              <div key={d.id} style={{ position: 'absolute', top: d.top, left: d.left, width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#f59e0b', boxShadow: '0 0 8px #f59e0b' }} />
+              <div key={d.id} style={{ position: 'absolute', top: d.top, left: d.left, width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#f59e0b', boxShadow: '0 0 8px rgba(245,158,11,0.5)' }} />
             ))}
 
             {agentPos === room && (
               <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', transition: 'all 0.3s' }}>
-                <div style={{ width: '56px', height: '56px', borderRadius: '50%', backgroundColor: '#0f172a', border: '3px solid #38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.6rem', boxShadow: '0 0 15px rgba(56, 189, 248, 0.4)' }}>
+                <div style={{ width: '56px', height: '56px', borderRadius: '50%', backgroundColor: '#0f172a', border: '3px solid #2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.6rem', boxShadow: '0 4px 12px rgba(15,23,42,0.2)' }}>
                   🤖
                 </div>
               </div>
@@ -98,7 +102,7 @@ function VacuumVisualizer() {
         {actionLog}
       </div>
 
-      {/* Visible Action Bar */}
+      {/* Action Bar */}
       <div style={{ display: 'flex', gap: '0.75rem' }}>
         <button
           onClick={() => setIsPlaying(!isPlaying)}

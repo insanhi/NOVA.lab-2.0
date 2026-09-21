@@ -12,7 +12,7 @@ function HanoiVisualizer() {
 
   const autoMovesQueue = useRef([]);
   const timerRef = useRef(null);
-  const diskColors = ['#f43f5e', '#38bdf8', '#4ade80', '#f59e0b', '#a855f7', '#ec4899'];
+  const diskColors = ['#f43f5e', '#3b82f6', '#10b981', '#f59e0b', '#a855f7', '#ec4899'];
 
   const initPegs = (n) => {
     setIsAutoPlaying(false);
@@ -124,52 +124,54 @@ function HanoiVisualizer() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       {/* Controls Bar */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#020617', padding: '0.85rem 1.25rem', borderRadius: '10px', border: '1px solid #1e293b' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f1f5f9', padding: '0.85rem 1.25rem', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Disks:</span>
+          <span style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: '600' }}>Disks:</span>
           <input
             type="range" min="3" max="5"
             value={numDisks}
             disabled={isAutoPlaying}
             onChange={(e) => setNumDisks(Number(e.target.value))}
-            style={{ cursor: 'pointer', accentColor: '#38bdf8' }}
+            style={{ cursor: 'pointer', accentColor: '#2563eb' }}
           />
-          <strong style={{ color: '#38bdf8', fontSize: '1rem' }}>{numDisks}</strong>
+          <strong style={{ color: '#0f172a', fontSize: '1rem' }}>{numDisks}</strong>
         </div>
 
         <div style={{ display: 'flex', gap: '0.5rem' }}>
           <button
             onClick={startAutoSolve}
             disabled={isAutoPlaying}
-            style={{ padding: '0.45rem 1rem', backgroundColor: '#38bdf8', color: '#020617', border: 'none', borderRadius: '6px', fontWeight: '800', cursor: 'pointer', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+            style={{ padding: '0.5rem 1.1rem', backgroundColor: '#0f172a', color: '#ffffff', border: 'none', borderRadius: '9999px', fontWeight: '700', cursor: 'pointer', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
           >
-            <FastForward style={{ width: '16px', height: '16px' }} /> Auto Solve Recursion
+            <FastForward style={{ width: '15px', height: '15px' }} /> Auto Solve
           </button>
-          <button onClick={() => initPegs(numDisks)} style={{ padding: '0.45rem 0.8rem', backgroundColor: 'transparent', border: '1px solid #334155', color: '#94a3b8', borderRadius: '6px', cursor: 'pointer' }}>
-            <RotateCcw style={{ width: '16px', height: '16px' }} />
+          <button onClick={() => initPegs(numDisks)} style={{ padding: '0.5rem 0.85rem', backgroundColor: '#ffffff', border: '1px solid #e2e8f0', color: '#64748b', borderRadius: '9999px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem', fontWeight: '600', fontSize: '0.85rem' }}>
+            <RotateCcw style={{ width: '14px', height: '14px' }} /> Reset
           </button>
         </div>
       </div>
 
       {/* Telemetry */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#020617', padding: '0.65rem 1rem', borderRadius: '6px', border: '1px solid #1e293b', fontSize: '0.85rem' }}>
-        <span>Step: <strong style={{ color: '#38bdf8' }}>{movesCount}</strong> / {Math.pow(2, numDisks) - 1}</span>
-        <span style={{ color: isWon ? '#4ade80' : '#cbd5e1' }}>{moveLog}</span>
+      <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#f8fafc', padding: '0.7rem 1.1rem', borderRadius: '10px', border: '1px solid #e2e8f0', fontSize: '0.85rem', color: '#334155' }}>
+        <span>Step: <strong style={{ color: '#2563eb' }}>{movesCount}</strong> / {Math.pow(2, numDisks) - 1}</span>
+        <span style={{ color: isWon ? '#10b981' : '#64748b' }}>{moveLog}</span>
       </div>
 
       {/* Peg Board */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.5rem', minHeight: '230px', alignItems: 'flex-end', borderBottom: '4px solid #334155', paddingBottom: '1rem', backgroundColor: '#020617', borderRadius: '10px', padding: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.5rem', minHeight: '260px', alignItems: 'flex-end', borderBottom: '4px solid #e2e8f0', paddingBottom: '1rem', backgroundColor: '#f8fafc', borderRadius: '16px', padding: '1.5rem', border: '1px solid #e2e8f0' }}>
         {['A', 'B', 'C'].map((peg) => (
           <div
             key={peg}
             onClick={() => handlePegClick(peg)}
             style={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: isAutoPlaying ? 'default' : 'pointer',
-              position: 'relative', border: selectedPeg === peg ? '1px dashed #38bdf8' : 'none', borderRadius: '8px', padding: '0.5rem'
+              position: 'relative', border: selectedPeg === peg ? '2px dashed #2563eb' : '2px dashed transparent', borderRadius: '12px', padding: '0.5rem',
+              backgroundColor: selectedPeg === peg ? 'rgba(37,99,235,0.04)' : 'transparent',
+              transition: 'all 0.15s ease'
             }}
           >
             {/* Rod stem */}
-            <div style={{ width: '8px', height: '160px', backgroundColor: '#1e293b', position: 'absolute', bottom: '26px', zIndex: 1, borderRadius: '4px' }} />
+            <div style={{ width: '6px', height: '160px', backgroundColor: '#cbd5e1', position: 'absolute', bottom: '26px', zIndex: 1, borderRadius: '3px' }} />
 
             {/* Disk Stack */}
             <div style={{ width: '100%', display: 'flex', flexDirection: 'column-reverse', alignItems: 'center', zIndex: 2, minHeight: '160px' }}>
@@ -177,11 +179,12 @@ function HanoiVisualizer() {
                 <div
                   key={size}
                   style={{
-                    width: `${25 + (size / numDisks) * 70}%`, height: '22px',
-                    backgroundColor: diskColors[size - 1], borderRadius: '6px',
+                    width: `${25 + (size / numDisks) * 70}%`, height: '24px',
+                    backgroundColor: diskColors[size - 1], borderRadius: '8px',
                     margin: '2px 0', display: 'flex', alignItems: 'center',
-                    justifyContent: 'center', fontSize: '0.75rem', color: '#020617',
-                    fontWeight: '900', boxShadow: '0 2px 5px rgba(0,0,0,0.5)'
+                    justifyContent: 'center', fontSize: '0.75rem', color: '#ffffff',
+                    fontWeight: '900', boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+                    transition: 'all 0.3s ease'
                   }}
                 >
                   {size}
@@ -189,8 +192,8 @@ function HanoiVisualizer() {
               ))}
             </div>
 
-            <span style={{ marginTop: '8px', fontSize: '0.9rem', fontWeight: '800', color: '#38bdf8' }}>
-              Peg {peg} {peg === 'C' ? '(Goal)' : ''}
+            <span style={{ marginTop: '10px', fontSize: '0.85rem', fontWeight: '800', color: '#0f172a' }}>
+              Peg {peg} {peg === 'C' ? <span style={{ color: '#10b981', fontSize: '0.75rem' }}>(Goal)</span> : ''}
             </span>
           </div>
         ))}

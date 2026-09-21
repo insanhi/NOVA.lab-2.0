@@ -3,20 +3,28 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowRight } from 'lucide-react';
 
+const FALLBACK_ASSIGNMENTS = [
+  { title: "Reflex Agent for Vacuum Cleaner World", slug: "vacuum-cleaner-agent", category: "Intelligent Agents", difficulty: "Easy" },
+  { title: "Tower of Hanoi: State Space Search", slug: "tower-of-hanoi", category: "State Space Representation", difficulty: "Medium" },
+  { title: "Breadth-First Search (BFS) Maze & Graph Pathfinder", slug: "bfs-maze-pathfinder", category: "Uninformed Search", difficulty: "Medium" },
+  { title: "A* Search Algorithm for 8-Puzzle Problem", slug: "a-star-8-puzzle", category: "Informed Search / Heuristics", difficulty: "Hard" },
+  { title: "Part C Mini-Project: Rule-Based Medical Diagnosis Expert System", slug: "medical-expert-system", category: "Knowledge Representation & Expert Systems", difficulty: "Hard" }
+];
+
 const MODULE_VISUALS = {
   'vacuum-cleaner-agent': {
     tag: 'INTELLIGENT AGENTS',
     meta: 'Deterministic 2-Room Model',
     renderCanvas: (
-      <div style={{ height: '160px', backgroundColor: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
-        <div style={{ width: '70px', height: '75px', borderRadius: '10px', border: '2px dashed #94a3b8', backgroundColor: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
+      <div style={{ height: '160px', backgroundColor: '#f1f5f9', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+        <div style={{ width: '70px', height: '75px', borderRadius: '10px', border: '2px dashed #cbd5e1', backgroundColor: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
           <span style={{ fontSize: '0.65rem', fontWeight: '700', color: '#475569' }}>ROOM A</span>
           <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
         </div>
         <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1rem' }}>
           🤖
         </div>
-        <div style={{ width: '70px', height: '75px', borderRadius: '10px', border: '2px dashed #94a3b8', backgroundColor: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: '70px', height: '75px', borderRadius: '10px', border: '2px dashed #cbd5e1', backgroundColor: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <span style={{ fontSize: '0.65rem', fontWeight: '700', color: '#475569' }}>ROOM B</span>
         </div>
       </div>
@@ -26,13 +34,13 @@ const MODULE_VISUALS = {
     tag: 'RECURSION & SEARCH',
     meta: 'State Space Traversal',
     renderCanvas: (
-      <div style={{ height: '160px', backgroundColor: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '22px', gap: '2rem' }}>
+      <div style={{ height: '160px', backgroundColor: '#f1f5f9', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '22px', gap: '2rem' }}>
         {['A', 'B', 'C'].map((peg, idx) => (
           <div key={peg} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
             <div style={{ width: '4px', height: '65px', backgroundColor: '#cbd5e1', borderRadius: '2px' }} />
             {idx === 0 && (
               <div style={{ position: 'absolute', bottom: 0, display: 'flex', flexDirection: 'column-reverse', alignItems: 'center' }}>
-                <div style={{ width: '46px', height: '9px', backgroundColor: '#ef4444', borderRadius: '3px', margin: '1px 0' }} />
+                <div style={{ width: '46px', height: '9px', backgroundColor: '#f43f5e', borderRadius: '3px', margin: '1px 0' }} />
                 <div style={{ width: '32px', height: '9px', backgroundColor: '#3b82f6', borderRadius: '3px', margin: '1px 0' }} />
                 <div style={{ width: '18px', height: '9px', backgroundColor: '#10b981', borderRadius: '3px', margin: '1px 0' }} />
               </div>
@@ -46,7 +54,7 @@ const MODULE_VISUALS = {
     tag: 'UNINFORMED SEARCH',
     meta: 'FIFO Queue Pathfinder',
     renderCanvas: (
-      <div style={{ height: '160px', backgroundColor: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ height: '160px', backgroundColor: '#f1f5f9', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 22px)', gap: '4px' }}>
           {Array.from({ length: 25 }).map((_, i) => {
             const isStart = i === 0;
@@ -58,7 +66,7 @@ const MODULE_VISUALS = {
                 key={i}
                 style={{
                   width: '22px', height: '22px', borderRadius: '4px',
-                  backgroundColor: isStart ? '#10b981' : isGoal ? '#ef4444' : isPath ? '#3b82f6' : isWall ? '#64748b' : '#e2e8f0'
+                  backgroundColor: isStart ? '#10b981' : isGoal ? '#f43f5e' : isPath ? '#2563eb' : isWall ? '#64748b' : '#e2e8f0'
                 }}
               />
             );
@@ -71,10 +79,10 @@ const MODULE_VISUALS = {
     tag: 'INFORMED SEARCH',
     meta: 'f(n) = g(n) + h(n)',
     renderCanvas: (
-      <div style={{ height: '160px', backgroundColor: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ height: '160px', backgroundColor: '#f1f5f9', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 34px)', gap: '4px', backgroundColor: '#e2e8f0', padding: '5px', borderRadius: '8px' }}>
           {[1, 2, 3, 4, 0, 5, 7, 8, 6].map((val, idx) => (
-            <div key={idx} style={{ width: '34px', height: '34px', borderRadius: '4px', backgroundColor: val === 0 ? 'transparent' : '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '0.85rem', color: '#0f172a' }}>
+            <div key={idx} style={{ width: '34px', height: '34px', borderRadius: '6px', backgroundColor: val === 0 ? 'transparent' : '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '0.85rem', color: '#0f172a', boxShadow: val !== 0 ? '0 1px 3px rgba(0,0,0,0.06)' : 'none' }}>
               {val !== 0 ? val : ''}
             </div>
           ))}
@@ -86,7 +94,7 @@ const MODULE_VISUALS = {
     tag: 'EXPERT SYSTEMS',
     meta: 'Forward & Backward Inference',
     renderCanvas: (
-      <div style={{ height: '160px', backgroundColor: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '18px', gap: '8px' }}>
+      <div style={{ height: '160px', backgroundColor: '#f1f5f9', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '18px', gap: '8px' }}>
         <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '0.65rem', padding: '0.2rem 0.5rem', borderRadius: '9999px', backgroundColor: '#dbeafe', color: '#1e40af', fontWeight: '700' }}>Fever</span>
           <span style={{ fontSize: '0.65rem', padding: '0.2rem 0.5rem', borderRadius: '9999px', backgroundColor: '#dbeafe', color: '#1e40af', fontWeight: '700' }}>Chills</span>
@@ -115,9 +123,12 @@ function Home() {
       })
       .catch((err) => {
         console.error(err);
+        setAssignments(FALLBACK_ASSIGNMENTS);
         setLoading(false);
       });
   }, []);
+
+  const displayData = assignments.length > 0 ? assignments : FALLBACK_ASSIGNMENTS;
 
   return (
     <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '3.5rem 2rem', display: 'flex', flexDirection: 'column', gap: '3.5rem' }}>
@@ -134,7 +145,7 @@ function Home() {
         </p>
       </div>
 
-      {/* 5-Card Consistent Grid */}
+      {/* 5-Card Grid */}
       <div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem', borderTop: '1px solid #e5e7eb', paddingTop: '1.5rem' }}>
           <h2 style={{ fontSize: '1.35rem', fontWeight: '800', color: '#0f172a', margin: 0 }}>
@@ -149,7 +160,7 @@ function Home() {
           <div style={{ padding: '4rem 0', textAlign: 'center', color: '#64748b' }}>Loading assignments...</div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '1.75rem' }}>
-            {assignments.map((item) => {
+            {displayData.map((item) => {
               const visual = MODULE_VISUALS[item.slug] || { tag: 'AI LAB', meta: 'Simulation', renderCanvas: null };
               const isPartC = item.slug === 'medical-expert-system';
 

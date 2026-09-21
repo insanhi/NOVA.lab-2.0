@@ -29,23 +29,53 @@ function EightPuzzleVisualizer() {
   };
 
   const isWon = board.every((v, i) => v === GOAL[i]);
+  const manhattan = getManhattan(board);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
-      <div style={{ display: 'flex', gap: '1.5rem', backgroundColor: 'var(--bg-primary)', padding: '0.6rem 1rem', borderRadius: '6px', fontSize: '0.85rem' }}>
-        <span>Moves g(n): <strong style={{ color: 'var(--accent-cyan)' }}>{moves}</strong></span>
-        <span>Manhattan h(n): <strong style={{ color: '#f59e0b' }}>{getManhattan(board)}</strong></span>
-        <span>Total f(n): <strong style={{ color: '#4ade80' }}>{moves + getManhattan(board)}</strong></span>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', alignItems: 'center' }}>
+      {/* Heuristic Telemetry */}
+      <div style={{ display: 'flex', gap: '1.5rem', backgroundColor: '#f1f5f9', padding: '0.75rem 1.25rem', borderRadius: '12px', fontSize: '0.88rem', border: '1px solid #e2e8f0', color: '#334155' }}>
+        <span>Moves g(n): <strong style={{ color: '#2563eb' }}>{moves}</strong></span>
+        <span>Manhattan h(n): <strong style={{ color: '#f59e0b' }}>{manhattan}</strong></span>
+        <span>Total f(n): <strong style={{ color: '#10b981' }}>{moves + manhattan}</strong></span>
       </div>
-      {isWon && <div style={{ color: '#4ade80', fontWeight: 'bold' }}>🎉 Goal State Reached!</div>}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 75px)', gridTemplateRows: 'repeat(3, 75px)', gap: '6px', backgroundColor: '#090d16', padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
+
+      {isWon && <div style={{ color: '#10b981', fontWeight: 'bold', fontSize: '1.05rem' }}>🎉 Goal State Reached!</div>}
+
+      {/* Puzzle Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 80px)', gridTemplateRows: 'repeat(3, 80px)', gap: '6px', backgroundColor: '#e2e8f0', padding: '10px', borderRadius: '16px', border: '1px solid #cbd5e1' }}>
         {board.map((val, idx) => (
-          <div key={idx} onClick={() => handleTileClick(idx)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: val === 0 ? 'transparent' : '#1e293b', border: val === 0 ? '1px dashed var(--border-color)' : '2px solid var(--accent-cyan)', color: '#fff', fontSize: '1.4rem', fontWeight: 'bold', borderRadius: '6px', cursor: val === 0 ? 'default' : 'pointer' }}>
+          <div
+            key={idx}
+            onClick={() => handleTileClick(idx)}
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              backgroundColor: val === 0 ? '#f1f5f9' : '#ffffff',
+              border: val === 0 ? '2px dashed #cbd5e1' : '2px solid #e2e8f0',
+              color: '#0f172a', fontSize: '1.5rem', fontWeight: '800',
+              borderRadius: '10px', cursor: val === 0 ? 'default' : 'pointer',
+              boxShadow: val !== 0 ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
+              transition: 'all 0.15s ease',
+              fontFamily: 'var(--font-mono)'
+            }}
+            onMouseEnter={(e) => { if (val !== 0) e.currentTarget.style.transform = 'scale(1.04)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+          >
             {val !== 0 ? val : ''}
           </div>
         ))}
       </div>
-      <button onClick={() => { setBoard([1, 2, 3, 4, 5, 6, 7, 0, 8]); setMoves(0); }} style={{ padding: '0.4rem 0.8rem', background: 'transparent', border: '1px solid var(--border-color)', color: 'var(--text-muted)', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.8rem' }}>
+
+      {/* Reset Button */}
+      <button
+        onClick={() => { setBoard([1, 2, 3, 4, 5, 6, 7, 0, 8]); setMoves(0); }}
+        style={{
+          padding: '0.55rem 1.1rem', backgroundColor: '#ffffff',
+          border: '1px solid #e2e8f0', color: '#64748b',
+          borderRadius: '9999px', cursor: 'pointer', display: 'flex',
+          alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', fontWeight: '600'
+        }}
+      >
         <Shuffle style={{ width: '14px', height: '14px' }} /> Reset Board
       </button>
     </div>
