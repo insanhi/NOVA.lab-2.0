@@ -33,7 +33,7 @@ function Navbar() {
         {/* Real Profile Links */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
           <a
-            href="https://github.com/insanhi"
+            href="https://github.com/insanhii"
             target="_blank"
             rel="noreferrer"
             style={{
