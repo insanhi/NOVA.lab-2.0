@@ -71,7 +71,7 @@ function BFSVisualizer() {
 
       copy[curr.r][curr.c].isVisited = true;
       setGrid([...copy]);
-      await new Promise((res) => setTimeout(res, 45));
+      await new Promise((res) => setTimeout(res, 350));
 
       const dirs = [[-1, 0], [1, 0], [0, -1], [0, 1]];
       for (const [dr, dc] of dirs) {

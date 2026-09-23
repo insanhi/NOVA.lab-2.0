@@ -99,7 +99,7 @@ export default function BFSRobotVisualizer() {
     const go = (s) => {
       if (s >= total - 1) { setRunning(false); return; }
       setStep(s + 1);
-      timerRef.current = setTimeout(() => go(s + 1), 180);
+      timerRef.current = setTimeout(() => go(s + 1), 500);
     };
     go(step);
   };

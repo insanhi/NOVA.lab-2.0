@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { ArrowLeft, Play, BookOpen, Code2, HelpCircle, CheckCircle2, XCircle, Copy, Check, Sparkles, Lightbulb, FileText, Bookmark } from 'lucide-react';
 
 import VacuumVisualizer from '../components/VacuumVisualizer';
@@ -182,7 +184,8 @@ function AssignmentDetail() {
             {/* Markdown Rendered Theory */}
             <div className="markdown-theory-container" style={{ fontSize: '1rem', lineHeight: '1.8', color: '#334155' }}>
               <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
+                remarkPlugins={[remarkGfm, remarkMath]}
+                rehypePlugins={[rehypeKatex]}
                 components={{
                   h1: ({ children }) => <h2 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#0f172a', marginTop: '2rem', marginBottom: '0.8rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.4rem' }}>{children}</h2>,
                   h2: ({ children }) => <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#0f172a', marginTop: '1.75rem', marginBottom: '0.75rem' }}>{children}</h3>,

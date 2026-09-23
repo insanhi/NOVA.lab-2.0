@@ -93,7 +93,7 @@ export default function EightQueensVisualizer() {
       });
       setAnimStep(col);
       col++;
-      timerRef.current = setTimeout(go, 350);
+      timerRef.current = setTimeout(go, 650);
     };
     go();
   };

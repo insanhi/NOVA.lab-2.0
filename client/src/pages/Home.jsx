@@ -8,6 +8,7 @@ const FALLBACK_ASSIGNMENTS = [
   { title: "Adversarial Search with Alpha-Beta Pruning", slug: "alpha-beta-pruning", category: "Adversarial Search", difficulty: "Hard" },
   { title: "A* Search Algorithm for 8-Puzzle Problem", slug: "a-star-8-puzzle", category: "Informed Search / Heuristics", difficulty: "Hard" },
   { title: "Tower of Hanoi: State Space Search", slug: "tower-of-hanoi", category: "State Space Representation", difficulty: "Medium" },
+  { title: "BFS Maze & Graph Pathfinder", slug: "bfs-maze-pathfinder", category: "Uninformed Search", difficulty: "Medium" },
   { title: "BFS Robot Path Planning on Grid", slug: "bfs-robot-path", category: "Uninformed Search", difficulty: "Medium" },
   { title: "DFS Water Jug Problem (State Space Search)", slug: "dfs-water-jug", category: "Uninformed Search", difficulty: "Medium" },
   { title: "8-Queens Problem using Backtracking (CSP)", slug: "eight-queens", category: "Constraint Satisfaction Problems", difficulty: "Hard" },
@@ -100,6 +101,32 @@ const MODULE_VISUALS = {
             <span style={{ fontSize: '0.7rem', fontWeight: '700', color: '#92400e', marginTop: '4px' }}>{peg}</span>
           </div>
         ))}
+      </div>
+    )
+  },
+  'bfs-maze-pathfinder': {
+    tag: 'BONUS · UNINFORMED SEARCH',
+    meta: 'BFS Wave Expansion · 5×8 Interactive Grid',
+    accent: '#3b82f6',
+    renderCanvas: (
+      <div style={{ height: '150px', backgroundColor: '#eff6ff', borderRadius: '14px', border: '1px solid #bfdbfe', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '6px', padding: '12px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: '3px', width: '100%' }}>
+          {Array.from({ length: 40 }).map((_, i) => {
+            const r = Math.floor(i / 8), c = i % 8;
+            const isStart = r === 0 && c === 0;
+            const isGoal = r === 4 && c === 7;
+            const isWall = [10, 18, 26].includes(i);
+            const isPath = [0, 8, 16, 24, 25, 26, 34, 35, 36, 37, 38, 39].includes(i) && !isWall;
+            const isVisited = [1, 9, 17].includes(i);
+            return (
+              <div key={i} style={{
+                height: '20px', borderRadius: '3px',
+                backgroundColor: isStart ? '#10b981' : isGoal ? '#f43f5e' : isWall ? '#64748b' : isPath ? '#2563eb' : isVisited ? '#dbeafe' : '#f1f5f9',
+              }} />
+            );
+          })}
+        </div>
+        <div style={{ fontSize: '0.68rem', color: '#2563eb', fontWeight: '700', letterSpacing: '0.3px' }}>Click cells · Toggle walls · Launch BFS</div>
       </div>
     )
   },
