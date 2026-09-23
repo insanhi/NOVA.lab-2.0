@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowRight, FlaskConical, Cpu } from 'lucide-react';
+import { API_URL } from '../config';
 
 const FALLBACK_ASSIGNMENTS = [
   { title: "Reflex Agent for Vacuum Cleaner World", slug: "vacuum-cleaner-agent", category: "Intelligent Agents", difficulty: "Easy" },
@@ -269,7 +270,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/assignments')
+    axios.get(`${API_URL}/api/assignments`)
       .then((res) => {
         setAssignments(res.data);
         setLoading(false);

@@ -2,7 +2,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
 import Assignment from './models/Assignment.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -43,9 +49,18 @@ app.get('/api/assignments/:slug', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.send('NOVA.lab 2.0 API is running smoothly.');
-});
+const clientDistPath = path.join(__dirname, '../client/dist');
+if (fs.existsSync(clientDistPath)) {
+  app.use(express.static(clientDistPath));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('NOVA.lab 2.0 API is running smoothly.');
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`📡 NOVA.lab Server running on http://localhost:${PORT}`);

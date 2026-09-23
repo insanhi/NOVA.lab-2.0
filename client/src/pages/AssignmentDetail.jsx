@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { ArrowLeft, Play, BookOpen, Code2, HelpCircle, CheckCircle2, XCircle, Copy, Check, Sparkles, Lightbulb, FileText, Bookmark } from 'lucide-react';
+import { API_URL } from '../config';
 
 import VacuumVisualizer from '../components/VacuumVisualizer';
 import HanoiVisualizer from '../components/HanoiVisualizer';
@@ -29,7 +30,7 @@ function AssignmentDetail() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/assignments/${slug}`)
+      .get(`${API_URL}/api/assignments/${slug}`)
       .then((res) => {
         setAssignment(res.data);
         setLoading(false);

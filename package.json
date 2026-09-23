@@ -1,0 +1,18 @@
+{
+  "name": "nova-lab-2.0",
+  "version": "2.0.0",
+  "description": "Interactive AI Laboratory Portal & Clinical AI Expert Suite",
+  "main": "server/index.js",
+  "type": "module",
+  "scripts": {
+    "install:all": "npm install --prefix client && npm install --prefix server",
+    "build": "npm run build --prefix client",
+    "start": "node server/index.js",
+    "server": "node server/index.js",
+    "client": "npm run dev --prefix client",
+    "seed": "node server/seed.js"
+  },
+  "keywords": ["ai", "react", "express", "mongodb", "sppu", "education"],
+  "author": "insanhii",
+  "license": "MIT"
+}
