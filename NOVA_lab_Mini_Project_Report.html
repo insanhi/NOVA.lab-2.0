@@ -3,537 +3,680 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>NOVA.lab 2.0 — SPPU Mini Project Report</title>
+  <title>A Mini Project Report On MediMind Clinical AI Suite — AISSMS COE</title>
   <style>
     @page {
       size: A4;
-      margin: 1in;
+      margin: 20mm 20mm 20mm 20mm;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Times New Roman', Times, serif;
       font-size: 12pt;
-      line-height: 1.6;
+      line-height: 1.5;
       color: #000000;
       margin: 0;
-      padding: 20px;
+      padding: 0;
       background: #ffffff;
     }
 
-    h1 {
-      font-size: 18pt;
+    .report-page {
+      width: 100%;
+      min-height: 297mm;
+      padding: 15mm;
+      margin: 0 auto 10px auto;
+      border: 2px solid #000000;
+      background: #ffffff;
+      position: relative;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    @media print {
+      .report-page {
+        margin: 0;
+        border: 2px solid #000000;
+        min-height: auto;
+        page-break-after: always;
+      }
+    }
+
+    h1.title-main {
+      font-size: 20pt;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    h2.title-sub {
+      font-size: 16pt;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    .center-text {
+      text-align: center;
+      text-indent: 0;
+    }
+
+    .justify-text {
+      text-align: justify;
+    }
+
+    p {
+      text-align: justify;
+      margin-top: 6px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    h2.section-header {
+      font-size: 16pt;
       font-weight: bold;
       text-align: center;
       text-transform: uppercase;
       margin-top: 15px;
       margin-bottom: 15px;
+      text-decoration: underline;
     }
 
-    h2 {
-      font-size: 16pt;
+    h3.subsection-header {
+      font-size: 13pt;
       font-weight: bold;
-      text-align: center;
-      text-transform: uppercase;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-
-    h3 {
-      font-size: 14pt;
-      font-weight: bold;
-      margin-top: 18px;
+      margin-top: 15px;
       margin-bottom: 8px;
-    }
-
-    h4 {
-      font-size: 12pt;
-      font-weight: bold;
-      margin-top: 14px;
-      margin-bottom: 6px;
-    }
-
-    p {
-      text-align: justify;
-      margin-bottom: 12px;
-      text-indent: 0.5in;
-    }
-
-    .no-indent {
-      text-indent: 0;
-    }
-
-    .text-center {
-      text-align: center;
-      text-indent: 0;
-    }
-
-    .page-break {
-      page-break-after: always;
-      break-after: page;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 15px 0;
+      margin: 12px 0;
       font-family: 'Times New Roman', Times, serif;
       font-size: 11pt;
     }
 
-    th,
-    td {
+    th, td {
       border: 1px solid #000000;
-      padding: 8px 10px;
+      padding: 6px 8px;
       text-align: left;
+      vertical-align: top;
     }
 
     th {
       background-color: #f2f2f2;
       font-weight: bold;
-    }
-
-    blockquote {
-      margin: 15px 0 15px 0.5in;
-      font-style: italic;
-    }
-
-    code,
-    pre {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 10.5pt;
-      background: #f8f8f8;
-      padding: 2px 4px;
-      border: 1px solid #ddd;
-    }
-
-    pre {
-      padding: 10px;
-      overflow-x: auto;
-      text-indent: 0;
-    }
-
-    .signature-table {
-      width: 100%;
-      border: none;
-      margin-top: 50px;
-    }
-
-    .signature-table td {
-      border: none;
       text-align: center;
-      vertical-align: bottom;
-      padding: 0 10px;
+    }
+
+    ul, ol {
+      margin-top: 4px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 4px;
+      text-align: justify;
+    }
+
+    .flex-signatures {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .signature-block {
+      flex: 1;
+    }
+
+    .diagram-box {
+      border: 1px dashed #444;
+      padding: 15px;
+      margin: 15px 0;
+      text-align: center;
+      background: #fafafa;
+      font-family: monospace;
+      font-size: 10pt;
+      white-space: pre-wrap;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- TITLE PAGE -->
-  <div class="text-center">
-    <p class="text-center" style="font-size: 14pt; font-weight: bold; margin-bottom: 5px;">SAVITRIBAI PHULE PUNE
-      UNIVERSITY</p>
-    <p class="text-center" style="font-size: 12pt; margin-bottom: 25px;">A Mini Project Report On</p>
+  <!-- PAGE 1: TITLE PAGE -->
+  <div class="report-page">
+    <div class="center-text" style="margin-top: 10px;">
+      <h3 style="margin: 0; font-size: 16pt; font-weight: bold; color: #b91c1c;">AISSMS</h3>
+      <h4 style="margin: 0; font-size: 13pt; font-weight: bold;">COLLEGE OF ENGINEERING</h4>
+      <p class="center-text" style="font-size: 9pt; margin: 2px 0 15px 0;">
+        An Autonomous Institute Affiliated to Savitribai Phule Pune University<br>
+        Approved by AICTE, New Delhi and Recognised by Govt. of Maharashtra<br>
+        Accredited by NAAC with “A+” Grade | NBA - 7 UG Programmes
+      </p>
+    </div>
 
-    <h1>NOVA.lab 2.0 — Interactive Artificial Intelligence Laboratory & Clinical Decision Support System Platform</h1>
+    <div style="margin-top: 30px;" class="center-text">
+      <p class="center-text" style="font-size: 14pt; margin-bottom: 5px;">A Mini Project Report On</p>
+      <h1 class="title-main" style="margin: 10px 0;">MediMind Clinical AI Suite</h1>
+      <p class="center-text" style="font-size: 12pt; font-style: italic; margin-bottom: 20px;">
+        Submitted in partial fulfilment of the requirements for the degree of
+      </p>
+      <h3 class="center-text" style="font-size: 13pt; font-weight: bold; margin-bottom: 5px;">THIRD YEAR OF ENGINEERING</h3>
+      <p class="center-text" style="font-size: 12pt; font-weight: bold; margin-bottom: 25px;">In<br>COMPUTER ENGINEERING</p>
+      
+      <p class="center-text" style="font-size: 12pt; font-style: italic; margin-bottom: 10px;">Submitted by</p>
+      <p class="center-text" style="font-size: 12pt; font-weight: bold; line-height: 1.8;">
+        Gaikwad Vaibhav – 24CO034<br>
+        Hanny Jangir - 24CO040<br>
+        Janhavi Adagale – 24CO052<br>
+        Joshi Aabha – 24CO053
+      </p>
 
-    <p class="text-center" style="font-size: 11pt; margin-top: 25px;">Submitted in partial fulfillment of the
-      requirements for the degree of</p>
-    <p class="text-center" style="font-size: 13pt; font-weight: bold;">THIRD YEAR OF ENGINEERING (TE Computer
-      Engineering)</p>
-    <p class="text-center" style="font-size: 11pt; font-style: italic;">SPPU 2024 Pattern (Term - I / Term - II)</p>
+      <p class="center-text" style="font-size: 12pt; margin-top: 25px; margin-bottom: 5px;">Under the Guidance of</p>
+      <p class="center-text" style="font-size: 13pt; font-weight: bold;">Prof. M. G. Ghodekar</p>
 
-    <br />
-    <p class="text-center" style="font-weight: bold; margin-bottom: 5px;">Submitted by:</p>
-    <p class="text-center" style="line-height: 1.4;">
-      Gaikwad Vaibhav – 24CO034<br />
-      Hanny Jangir – 24CO040<br />
-      Janhavi Adagale – 24CO052<br />
+      <div style="margin-top: 40px;" class="center-text">
+        <p class="center-text" style="font-size: 12pt; font-weight: bold; margin: 2px 0;">Department Of Computer Engineering</p>
+        <p class="center-text" style="font-size: 12pt; font-weight: bold; margin: 2px 0;">ALL INDIA SHRI SHIVAJI MEMORIAL SOCIETY’S</p>
+        <p class="center-text" style="font-size: 12pt; font-weight: bold; margin: 2px 0;">COLLEGE OF ENGINEERING Pune – 411001</p>
+        <p class="center-text" style="font-size: 11pt; margin-top: 10px; margin-bottom: 2px;">Academic Year: 2026-27 (Term – I)</p>
+        <p class="center-text" style="font-size: 12pt; font-weight: bold; margin-top: 2px;">Savitribai Phule Pune University</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: CERTIFICATE -->
+  <div class="report-page">
+    <div class="center-text">
+      <h3 style="margin: 0; font-size: 15pt; font-weight: bold; color: #b91c1c;">AISSMS</h3>
+      <h4 style="margin: 0; font-size: 12pt; font-weight: bold;">COLLEGE OF ENGINEERING</h4>
+      <p class="center-text" style="font-size: 9pt; margin: 2px 0;">DEPARTMENT OF COMPUTER ENGINEERING</p>
+    </div>
+
+    <h2 class="section-header" style="margin-top: 30px; margin-bottom: 30px;">CERTIFICATE</h2>
+
+    <p class="justify-text" style="font-size: 12pt; line-height: 2; text-indent: 0.5in;">
+      This is to certify that <strong>Vaibhav Gaikwad (24CO034)</strong>, <strong>Hanny Jangir (24CO040)</strong>, 
+      <strong>Janhavi Adagale (24CO052)</strong> and <strong>Joshi Aabha (24CO053)</strong> from Third Year 
+      Computer Engineering have successfully completed their mini project work titled 
+      <strong>“MediMind Clinical AI Suite”</strong> at AISSMS College of Engineering, Pune in partial 
+      fulfilment of the requirements for the degree of Bachelor of Engineering in Computer Engineering.
+    </p>
+
+    <div class="flex-signatures" style="margin-top: 120px;">
+      <div class="signature-block">
+        <p class="center-text"><strong>Prof. M. G. Ghodekar</strong><br>Project Guide</p>
+      </div>
+      <div class="signature-block">
+        <p class="center-text"><strong>Dr. D. P. Gaikwad</strong><br>HOD</p>
+      </div>
+      <div class="signature-block">
+        <p class="center-text"><strong>Dr. D. S. Bormane</strong><br>Principal<br>AISSMS COE, Pune</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 3: APPROVAL PAGE -->
+  <div class="report-page">
+    <h2 class="section-header" style="margin-top: 40px; margin-bottom: 40px;">MINI PROJECT APPROVAL</h2>
+
+    <p class="center-text" style="font-size: 13pt; margin-bottom: 10px;">The Mini Project entitled</p>
+    <h2 class="center-text" style="font-size: 18pt; font-weight: bold; margin-bottom: 15px;">MediMind Clinical AI Suite</h2>
+    <p class="center-text" style="font-size: 12pt; margin-bottom: 15px;">By</p>
+
+    <p class="center-text" style="font-size: 12pt; font-weight: bold; line-height: 2; margin-bottom: 30px;">
+      Gaikwad Vaibhav – 24CO034<br>
+      Hanny Jangir - 24CO040<br>
+      Janhavi Adagale – 24CO052<br>
       Joshi Aabha – 24CO053
     </p>
 
-    <br />
-    <p class="text-center" style="font-weight: bold; margin-bottom: 5px;">Under the Guidance of:</p>
-    <p class="text-center" style="font-size: 13pt; font-weight: bold;">Prof. M. G. Ghodekar</p>
-    <p class="text-center">Department of Computer Engineering</p>
+    <p class="center-text" style="font-size: 12pt; margin-bottom: 5px;">Is approved for the degree of</p>
+    <p class="center-text" style="font-size: 13pt; font-weight: bold; margin-bottom: 5px;">Third Year of Engineering</p>
+    <p class="center-text" style="font-size: 12pt; margin-bottom: 5px;">In</p>
+    <p class="center-text" style="font-size: 13pt; font-weight: bold; margin-bottom: 60px;">Computer Engineering</p>
 
-    <br />
-    <p class="text-center" style="font-size: 13pt; font-weight: bold;">ALL INDIA SHRI SHIVAJI MEMORIAL
-      SOCIETY’S<br />COLLEGE OF ENGINEERING, PUNE – 411001</p>
-    <p class="text-center" style="font-weight: bold;">Academic Year: 2026-2027</p>
+    <div class="flex-signatures">
+      <div class="signature-block">
+        <p class="center-text"><strong>Examiner 1</strong><br>Name and Signature</p>
+      </div>
+      <div class="signature-block">
+        <p class="center-text"><strong>Examiner 2</strong><br>Name and Signature</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 60px;">
+      <p class="no-indent">Date:</p>
+      <p class="no-indent">Place: Pune</p>
+    </div>
   </div>
 
-  <div class="page-break"></div>
+  <!-- PAGE 4: ABSTRACT -->
+  <div class="report-page">
+    <h2 class="section-header">ABSTRACT</h2>
 
-  <!-- CERTIFICATE -->
-  <div class="text-center">
-    <h2>ALL INDIA SHRI SHIVAJI MEMORIAL SOCIETY’S COLLEGE OF ENGINEERING</h2>
-    <p class="text-center" style="font-weight: bold; font-size: 13pt;">DEPARTMENT OF COMPUTER ENGINEERING</p>
-    <br />
-    <h1>CERTIFICATE</h1>
+    <p>
+      The <strong>MediMind Clinical AI Suite</strong> is an advanced, rule-based expert diagnostic and clinical decision support system (CDSS) designed to assist medical practitioners, triage nurses, and students in automated disease diagnosis, symptom-driven inference, and patient vital monitoring. Traditional clinical diagnostic workflows often rely on manual observation across fragmented reference manuals, medical history records, laboratory tests, and differential diagnosis tables. This manual process can be time-consuming, prone to human error under high casualty pressure, and may lead to delayed medical interventions. The proposed MediMind system integrates these diagnostic workflows into a unified, interactive software suite.
+    </p>
+
+    <p>
+      The application collects structured patient clinical data, including observed symptoms across multiple body systems (respiratory, cardiovascular, gastrointestinal, neurological, and systemic), physiological vitals (blood pressure, heart rate, body temperature, oxygen saturation SpO2), and patient risk factors. This information is validated and stored in working memory. The core inference engine executes both <strong>Forward Chaining</strong> (data-driven reasoning from symptoms to disease diagnosis) and <strong>Backward Chaining</strong> (goal-driven hypothesis verification from suspected disease to required symptom evidence). The system evaluates disease probabilities, generates differential diagnoses, calculates patient triage acuity levels, and produces comprehensive Electronic Health Record (EHR) diagnostic reports.
+    </p>
+
+    <p>
+      MediMind is designed as more than a basic symptom checker. It features an interactive Knowledge Base (KB) Editor that allows medical experts to add, modify, or audit production rules (IF-THEN clauses), adjust certainty factors (CF), and update clinical recommendation guidelines. The system retains complete working memory context, enabling clinicians to perform iterative diagnostic updates without re-entering patient data.
+    </p>
+
+    <p>
+      The MediMind Clinical AI Suite demonstrates the practical implementation of artificial intelligence, knowledge representation, production systems, and inference algorithms in modern healthcare. The system can be extended in the future through integration with IoT physiological sensors, electronic medical record (EMR) databases, and deep learning medical imaging classification modules.
+    </p>
   </div>
 
-  <p>This is to certify that <b>Vaibhav Gaikwad (24CO034)</b>, <b>Hanny Jangir (24CO040)</b>, <b>Janhavi Adagale
-      (24CO052)</b>, and <b>Joshi Aabha (24CO053)</b> from Third Year Computer Engineering have successfully completed
-    their mini project work titled <b>“NOVA.lab 2.0 — Interactive Artificial Intelligence Laboratory & Clinical Decision
-      Support System Platform”</b> at AISSMS College of Engineering, Pune, in partial fulfillment of the bachelor’s
-    degree in Computer Engineering under Savitribai Phule Pune University.</p>
+  <!-- PAGE 5: ACKNOWLEDGEMENT -->
+  <div class="report-page">
+    <h2 class="section-header">ACKNOWLEDGEMENT</h2>
 
-  <br /><br /><br />
-  <table class="signature-table">
-    <tr>
-      <td>________________________<br /><b>Prof. M. G. Ghodekar</b><br />Project Guide</td>
-      <td>________________________<br /><b>Dr. D. P. Gaikwad</b><br />Head of Department (HOD)</td>
-      <td>________________________<br /><b>Dr. D. S. Bormane</b><br />Principal, AISSMS COE</td>
-    </tr>
-  </table>
+    <p>
+      We express our sincere gratitude to our project guide, <strong>Prof. M. G. Ghodekar</strong>, for her valuable guidance, encouragement, and continuous support throughout the development of this mini project. Her insightful suggestions helped us understand the practical aspects of designing rule-based expert systems, knowledge representation, and preparing this academic report.
+    </p>
 
-  <div class="page-break"></div>
+    <p>
+      We sincerely acknowledge the dedicated contributions, cooperation, and consistent efforts of all our team members: <strong>Vaibhav Gaikwad, Hanny Jangir, Janhavi Adagale, and Joshi Aabha</strong>. The successful completion of this project was possible because of the active participation, shared responsibility, and effective teamwork of every member.
+    </p>
 
-  <!-- APPROVAL -->
-  <h2>MINI PROJECT APPROVAL</h2>
+    <p>
+      We are deeply thankful to <strong>Dr. D. P. Gaikwad</strong>, Head of the Department of Computer Engineering, and <strong>Dr. D. S. Bormane</strong>, Principal of AISSMS College of Engineering, Pune, for providing us with the necessary departmental facilities, laboratory resources, and encouraging academic environment required to complete this work.
+    </p>
 
-  <p class="no-indent">The Mini Project entitled:</p>
-  <h3 class="text-center">NOVA.lab 2.0 — Interactive Artificial Intelligence Laboratory & Clinical Decision Support
-    System Platform</h3>
+    <p>
+      We also extend our thanks to all faculty and staff members of the Department of Computer Engineering for their direct and indirect support. We are grateful to our classmates and friends for their constructive feedback during the testing and refinement of the system.
+    </p>
 
-  <p class="no-indent">By:</p>
-  <ul style="list-style-type: none; padding-left: 20px;">
-    <li>Gaikwad Vaibhav – 24CO034</li>
-    <li>Hanny Jangir – 24CO040</li>
-    <li>Janhavi Adagale – 24CO052</li>
-    <li>Joshi Aabha – 24CO053</li>
-  </ul>
+    <p>
+      Finally, we express our heartfelt gratitude to our families for their constant encouragement, patience, and support throughout the completion of this engineering mini project.
+    </p>
 
-  <p class="no-indent">Is approved for the degree of <b>Third Year of Engineering in Computer Engineering</b>.</p>
+    <div style="margin-top: 50px;">
+      <p class="no-indent">Academic Year: 2026-2027 (Term – I)</p>
+      <p class="no-indent">Date: 23rd September 2026</p>
+    </div>
+  </div>
 
-  <br /><br /><br />
-  <table class="signature-table">
-    <tr>
-      <td>________________________<br /><b>Examiner 1</b><br />Name & Signature</td>
-      <td>________________________<br /><b>Examiner 2</b><br />Name & Signature</td>
-    </tr>
-  </table>
+  <!-- PAGE 6: TABLE OF CONTENTS -->
+  <div class="report-page">
+    <h2 class="section-header">TABLE OF CONTENTS</h2>
 
-  <br /><br />
-  <p class="no-indent"><b>Date:</b><br /><b>Place:</b> AISSMS COE, Pune</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 10%;">Sr. No.</th>
+          <th style="width: 75%;">Chapter / Section</th>
+          <th style="width: 15%;">Page No.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="center-text">1</td><td>Abstract</td><td class="center-text">1</td></tr>
+        <tr><td class="center-text">2</td><td>Acknowledgement</td><td class="center-text">2</td></tr>
+        <tr><td class="center-text">3</td><td>Table of Contents</td><td class="center-text">3</td></tr>
+        <tr><td class="center-text">4</td><td>Introduction</td><td class="center-text">4 - 5</td></tr>
+        <tr><td class="center-text">5</td><td>Problem Statement and Objectives</td><td class="center-text">6 - 7</td></tr>
+        <tr><td class="center-text">6</td><td>Software Requirement Specification (SRS)</td><td class="center-text">8 - 10</td></tr>
+        <tr><td class="center-text">7</td><td>System Analysis and Design</td><td class="center-text">11 - 13</td></tr>
+        <tr><td class="center-text">8</td><td>AI Based Clinical Diagnostic Systems & Rule Inference</td><td class="center-text">14 - 17</td></tr>
+        <tr><td class="center-text">9</td><td>Knowledge Base & Working Memory Management</td><td class="center-text">18 - 21</td></tr>
+        <tr><td class="center-text">10</td><td>API Integration and Backend Implementation</td><td class="center-text">22 - 25</td></tr>
+        <tr><td class="center-text">11</td><td>Graphical User Interface & Clinical Visualizer</td><td class="center-text">26 - 27</td></tr>
+        <tr><td class="center-text">12</td><td>System Implementation & Testing</td><td class="center-text">28 - 31</td></tr>
+        <tr><td class="center-text">13</td><td>Conclusion & Future Scope</td><td class="center-text">32</td></tr>
+        <tr><td class="center-text">14</td><td>References</td><td class="center-text">33</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <div class="page-break"></div>
+  <!-- PAGE 7: INTRODUCTION -->
+  <div class="report-page">
+    <h2 class="section-header">CHAPTER 1: INTRODUCTION</h2>
 
-  <!-- ABSTRACT -->
-  <h2>ABSTRACT</h2>
-  <p><b>NOVA.lab 2.0</b> is an interactive, full-stack web-based Artificial Intelligence simulation platform and
-    Clinical Decision Support System (CDSS) designed specifically to meet the academic, practical, and experimental
-    requirements of the Savitribai Phule Pune University (SPPU) 2024 Pattern AI Curriculum. Traditional computer
-    engineering AI laboratories often rely on static code scripts or terminal executions that lack real-time
-    visualization of agent state transitions, frontier memory queue expansion, heuristic evaluation functions, and rule
-    deduction chains. This lack of visual feedback makes complex AI paradigms abstract and difficult to master.</p>
+    <h3 class="subsection-header">1.1 Overview of the Project</h3>
+    <p>
+      In modern healthcare systems, rapid and accurate clinical decision-making is vital for saving lives, optimizing hospital triage, and preventing diagnostic errors. Diagnostic decision-making requires analyzing a complex web of symptoms, physiological vitals, patient medical history, and risk factors. Traditional clinical workflows rely heavily on the manual expertise of physicians and nurses, who cross-reference patient symptoms against extensive clinical guidelines and medical literature. Under high patient volumes—such as emergency department triage—this process can become overloaded, leading to delayed interventions or oversight of critical disease markers.
+    </p>
+    <p>
+      The <strong>MediMind Clinical AI Suite</strong> is designed to address these challenges by providing an interactive, rule-based expert diagnostic system. Built around production rules (IF-THEN logic) inspired by historic expert systems like Stanford's MYCIN, MediMind combines data-driven <strong>Forward Chaining inference</strong> and hypothesis-driven <strong>Backward Chaining inference</strong>. The system provides real-time patient vital analysis, automated disease diagnosis with certainty factors, interactive Knowledge Base auditing, and electronic report generation.
+    </p>
 
-  <p>The <b>NOVA.lab 2.0</b> platform bridges this gap by integrating five interactive simulation modules into a unified
-    Google Labs-inspired web portal:</p>
-  <ol>
-    <li><b>Reflex Agent Vacuum Environment</b>: Simulates the PEAS framework, state perception tuples &lt;Location,
-      Status&gt;, and condition-action production rules with performance metrics.</li>
-    <li><b>Tower of Hanoi State Space Graph</b>: Demonstrates divide-and-conquer recursion, stack activation frames,
-      Sierpiński gasket state graphs, and optimal move proofs (2<sup>n</sup> - 1).</li>
-    <li><b>Breadth-First Search (BFS) Grid Pathfinder</b>: Illustrates FIFO queue frontier expansion, cycle detection
-      via visited sets, and unweighted shortest-path optimality.</li>
-    <li><b>A* Search Algorithm for 8-Puzzle</b>: Visualizes heuristic evaluation f(n) = g(n) + h(n), comparing Manhattan
-      Distance dominance against Misplaced Tiles.</li>
-    <li><b>Part C Mini-Project (MediMind Clinical AI Suite)</b>: A production-grade Rule-Based Expert System supporting
-      Forward Chaining, Goal-Directed Backward Chaining, real-time patient vitals parsing, live Knowledge Base
-      customization, and automated Electronic Health Record (EHR) prescription report generation.</li>
-  </ol>
+    <h3 class="subsection-header">1.2 Need for the System</h3>
+    <p>
+      Generic medical chatbots and online search engines often provide fragmented, unstructured, or alarmist diagnostic suggestions without considering clinical context or physiological vitals. For example, a patient presenting with high fever and chills could be suffering from Malaria, Typhoid, or Dengue. A general keyword search fails to evaluate specific symptom combinations (such as retro-orbital pain or bradycardia) or patient vitals (such as blood pressure or oxygen saturation).
+    </p>
+    <p>
+      MediMind addresses this critical gap by implementing structured clinical input, production rule validation, and dynamic inference engines. The system validates symptom presence, checks physiological parameters against clinical boundaries, and executes deterministic rule evaluation to yield transparent, explainable diagnostic reports.
+    </p>
+  </div>
 
-  <p>Built using React 19, Node.js/Express, MongoDB Mongoose, and REST APIs, NOVA.lab 2.0 provides students and faculty
-    with an end-to-end sandbox, interactive quiz assessments, dual-language source code (Python & Java), and detailed
-    academic theory manuals.</p>
+  <!-- PAGE 8: INTRODUCTION (CONT.) -->
+  <div class="report-page">
+    <h3 class="subsection-header">1.3 Purpose of the Project</h3>
+    <p>
+      The primary purpose of this project is to develop an intelligent, interactive Clinical Decision Support System (CDSS) that demonstrates the practical application of Artificial Intelligence in medicine. Specific purposes include:
+    </p>
+    <ul>
+      <li>To build a robust rule-based expert system capable of evaluating complex medical production rules.</li>
+      <li>To implement dual inference engines: Forward Chaining for data-driven symptom diagnosis and Backward Chaining for goal-driven differential verification.</li>
+      <li>To integrate patient vital sign monitoring with automated alert thresholding.</li>
+      <li>To provide an interactive Knowledge Base Editor that enables medical experts to add, modify, and audit clinical diagnostic rules.</li>
+      <li>To generate standardized, printable Electronic Health Record (EHR) diagnostic reports for clinical auditing.</li>
+    </ul>
 
-  <div class="page-break"></div>
+    <h3 class="subsection-header">1.4 Scope of the Project</h3>
+    <p>
+      The scope of the MediMind Clinical AI Suite encompasses:
+    </p>
+    <ul>
+      <li><strong>Diagnostic Modules:</strong> Multi-system symptom selection across Infectious Diseases, Respiratory Disorders, Cardiovascular Conditions, Gastrointestinal Pathologies, and Neurological Disorders.</li>
+      <li><strong>Inference Capability:</strong> Deterministic evaluation of rule conditions, working memory updates, and confidence scoring.</li>
+      <li><strong>Patient Vitals Monitoring:</strong> Heart rate, blood pressure, temperature, respiratory rate, and SpO2 tracking.</li>
+      <li><strong>EHR Export:</strong> Automated clinical report formatting with medical disclaimer and timestamp.</li>
+    </ul>
+    <p>
+      <em>Limitation Note:</em> MediMind is designed as an educational and clinical decision support assistant. It does not replace licensed medical diagnosis or emergency healthcare interventions.
+    </p>
+  </div>
 
-  <!-- ACKNOWLEDGEMENT -->
-  <h2>ACKNOWLEDGEMENT</h2>
-  <p>We express our sincere gratitude to our project guide, <b>Prof. M. G. Ghodekar</b>, for her valuable guidance,
-    constant encouragement, and insightful feedback throughout the conceptualization and development of <b>NOVA.lab
-      2.0</b>. Her technical direction helped us align our software architecture with SPPU AI lab guidelines.</p>
+  <!-- PAGE 9: PROBLEM STATEMENT -->
+  <div class="report-page">
+    <h2 class="section-header">CHAPTER 2: PROBLEM STATEMENT & OBJECTIVES</h2>
 
-  <p>We gratefully acknowledge <b>Dr. D. P. Gaikwad</b>, Head of the Department of Computer Engineering, and <b>Dr. D.
-      S. Bormane</b>, Principal of AISSMS College of Engineering, Pune, for providing state-of-the-art laboratory
-    facilities and an inspiring academic environment.</p>
+    <h3 class="subsection-header">2.1 Problem Statement</h3>
+    <p>
+      Medical diagnosis in clinical and emergency environments involves synthesizing heterogeneous patient data—such as patient-reported symptoms, physical examination findings, and physiological vital signs—into accurate diagnostic hypotheses. Traditional diagnostic processes suffer from three major bottlenecks:
+    </p>
+    <ol>
+      <li><strong>Cognitive Overload & Triage Delays:</strong> In crowded clinical settings, healthcare workers must rapidly prioritize patients. Manual evaluation of multi-system symptoms can delay critical treatment for conditions like Sepsis or Myocardial Infarction.</li>
+      <li><strong>Lack of Diagnostic Explainability in AI:</strong> Modern deep learning black-box models provide predictions without explaining the underlying reasoning chain. Medical practitioners require transparent, rule-traceable explanations before acting on AI recommendations.</li>
+      <li><strong>Static Diagnostic Tools:</strong> Existing clinical tools often lack real-time knowledge base customization, preventing doctors from updating diagnostic criteria according to localized disease outbreaks or updated clinical protocols.</li>
+    </ol>
+    <p>
+      Therefore, there is a clear need for an explainable, interactive, and customizable Clinical AI Expert System that combines structured symptom inputs, dual-mode rule inference, and working memory tracking to deliver instant, explainable medical decision support.
+    </p>
+  </div>
 
-  <p>We extend our deep appreciation to all team members—<b>Hanny Jangir, Vaibhav Gaikwad, Janhavi Adagale, and Joshi
-      Aabha</b>—for their collaborative work, code contributions, and dedication. Finally, we thank our classmates and
-    families for their unwavering encouragement.</p>
+  <!-- PAGE 10: OBJECTIVES -->
+  <div class="report-page">
+    <h3 class="subsection-header">2.2 Specific Objectives of the Project</h3>
+    <ol>
+      <li>To collect and structure comprehensive clinical symptom parameters across 5 medical categories (Infectious, Respiratory, Cardiac, GI, Neurological).</li>
+      <li>To implement a Forward Chaining inference engine that matches working memory facts against production rules to deduce potential diseases.</li>
+      <li>To implement a Backward Chaining inference engine that validates specific disease hypotheses by querying missing symptom evidence.</li>
+      <li>To design a real-time Patient Vitals monitoring dashboard with physiological anomaly detection (tachycardia, fever, hypoxia).</li>
+      <li>To develop an interactive Knowledge Base (KB) Management Editor for dynamic rule creation, editing, and certainty factor adjustment.</li>
+      <li>To implement automated EHR report generation formatted in Times New Roman for formal medical submission.</li>
+      <li>To ensure complete data privacy and local browser/server persistence without exposing confidential patient data.</li>
+    </ol>
 
-  <div class="page-break"></div>
+    <h3 class="subsection-header">2.3 Expected Outcomes</h3>
+    <p>
+      The expected outcome of the project is a fully functional web-based Clinical AI Suite featuring 5 interactive tabs: Forward Chaining Workbench, Backward Chaining Hypothesis Verifier, Patient Vitals Triage Dashboard, Knowledge Base Rule Editor, and EHR Report Generator.
+    </p>
+  </div>
 
-  <!-- TABLE OF CONTENTS -->
-  <h2>TABLE OF CONTENTS</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 10%; text-align: center;">Sr. No.</th>
-        <th>Chapter / Section Title</th>
-        <th style="width: 15%; text-align: center;">Page No.</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: center;">1</td>
-        <td><b>Abstract</b></td>
-        <td style="text-align: center;">i</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">2</td>
-        <td><b>Acknowledgement</b></td>
-        <td style="text-align: center;">ii</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">3</td>
-        <td><b>Chapter 1: Introduction</b></td>
-        <td style="text-align: center;">1</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">4</td>
-        <td><b>Chapter 2: Problem Statement and Objectives</b></td>
-        <td style="text-align: center;">4</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">5</td>
-        <td><b>Chapter 3: Software Requirement Specification (SRS)</b></td>
-        <td style="text-align: center;">6</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">6</td>
-        <td><b>Chapter 4: System Analysis and Architecture Design</b></td>
-        <td style="text-align: center;">10</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">7</td>
-        <td><b>Chapter 5: AI Algorithms & Clinical Inference Engine</b></td>
-        <td style="text-align: center;">14</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">8</td>
-        <td><b>Chapter 6: Database and Knowledge Base Schema</b></td>
-        <td style="text-align: center;">25</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">9</td>
-        <td><b>Chapter 7: API Endpoints and Backend Architecture</b></td>
-        <td style="text-align: center;">28</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">10</td>
-        <td><b>Chapter 8: Graphical User Interface</b></td>
-        <td style="text-align: center;">30</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">11</td>
-        <td><b>Chapter 9: Implementation Details</b></td>
-        <td style="text-align: center;">32</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">12</td>
-        <td><b>Chapter 10: Conclusion and Future Scope</b></td>
-        <td style="text-align: center;">35</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">13</td>
-        <td><b>References</b></td>
-        <td style="text-align: center;">36</td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- PAGE 11: SRS - FUNCTIONAL REQUIREMENTS -->
+  <div class="report-page">
+    <h2 class="section-header">CHAPTER 3: SOFTWARE REQUIREMENT SPECIFICATION</h2>
 
-  <div class="page-break"></div>
+    <h3 class="subsection-header">3.1 Functional Requirements</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%;">Req ID</th>
+          <th style="width: 85%;">Functional Requirement Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="center-text">FR-01</td><td>The system shall allow users to select observed symptoms from structured categories.</td></tr>
+        <tr><td class="center-text">FR-02</td><td>The system shall execute Forward Chaining inference to match working memory against diagnostic rules.</td></tr>
+        <tr><td class="center-text">FR-03</td><td>The system shall calculate disease probability scores based on rule matched conditions.</td></tr>
+        <tr><td class="center-text">FR-04</td><td>The system shall execute Backward Chaining by asking target questions for suspected diseases.</td></tr>
+        <tr><td class="center-text">FR-05</td><td>The system shall accept physiological vitals (BP, HR, Temp, SpO2) and highlight anomalous values.</td></tr>
+        <tr><td class="center-text">FR-06</td><td>The system shall allow medical experts to add, edit, or delete production rules in the Knowledge Base.</td></tr>
+        <tr><td class="center-text">FR-07</td><td>The system shall generate a structured EHR Diagnostic Report containing patient vitals, diagnosis, and treatment plan.</td></tr>
+        <tr><td class="center-text">FR-08</td><td>The system shall provide printable PDF/HTML export formatted in formal Times New Roman style.</td></tr>
+      </tbody>
+    </table>
 
-  <!-- CHAPTER 1 -->
-  <h2>CHAPTER 1: INTRODUCTION</h2>
-  <h3>1.1 Overview of the Project</h3>
-  <p>Artificial Intelligence (AI) education in modern computer engineering curricula requires a balanced synthesis of
-    theoretical rigor and hands-on simulation. Under the Savitribai Phule Pune University (SPPU) 2024 pattern for Third
-    Year Computer Engineering, students study core AI paradigms including Intelligent Agents, State-Space Search,
-    Uninformed Search, Informed Heuristic Search, and Rule-Based Expert Systems.</p>
+    <h3 class="subsection-header">3.2 Non-Functional Requirements</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Area</th>
+          <th style="width: 75%;">Requirement Specification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Usability</strong></td><td>Interface must be clean, intuitive, and accessible to medical professionals and students.</td></tr>
+        <tr><td><strong>Performance</strong></td><td>Rule inference execution time must be under 100 milliseconds for prompt response.</td></tr>
+        <tr><td><strong>Reliability</strong></td><td>Working memory state must be maintained without data corruption during tab switches.</td></tr>
+        <tr><td><strong>Maintainability</strong></td><td>Knowledge Base rules must be decoupled from UI rendering logic.</td></tr>
+        <tr><td><strong>Security</strong></td><td>Patient data must remain local to the session and not logged to public endpoints.</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <p><b>NOVA.lab 2.0</b> is an interactive web-based AI laboratory workbench developed to provide intuitive visual
-    simulations for these fundamental algorithms. Rather than reading abstract formulas or running headless command-line
-    scripts, students can interactively control environment percepts, trigger state transitions, observe FIFO queues and
-    priority min-heaps in real time, and test production rules.</p>
+  <!-- PAGE 12: SYSTEM ANALYSIS AND DESIGN -->
+  <div class="report-page">
+    <h2 class="section-header">CHAPTER 4: SYSTEM ANALYSIS AND DESIGN</h2>
 
-  <h3>1.2 Need for the System</h3>
-  <p>Traditional practical laboratory sessions present several challenges to engineering students: Abstract state space
-    concepts, lack of interactive visual feedback during algorithm steps, inconsistent practical manual preparation, and
-    high development complexity for the Part C Mini-Project requirements. NOVA.lab 2.0 solves these issues by delivering
-    an integrated visual platform.</p>
+    <h3 class="subsection-header">4.1 System Overview</h3>
+    <p>
+      The MediMind Clinical AI Suite is organized using a modular, multi-layer web architecture. The system separates user presentation, clinical inference processing, knowledge base storage, and reporting components.
+    </p>
 
-  <h3>1.3 Purpose of the Project</h3>
-  <p>The primary purpose is to provide an open-source, full-stack practical workbench aligned with the SPPU 2024 AI
-    syllabus, enhancing conceptual clarity through step-by-step graphical visualizers, dual-language source code (Python
-    & Java), and interactive viva assessment quizzes.</p>
+    <div class="diagram-box">
++-----------------------------------------------------------------------+
+|                       WEB GRAPHICAL USER INTERFACE                     |
+|  [Forward Chaining] [Backward Chaining] [Vitals] [KB Editor] [EHR]   |
++-----------------------------------+-----------------------------------+
+                                    |
+                                    v
++-----------------------------------+-----------------------------------+
+|                        CLINICAL INFERENCE ENGINE                      |
+|  - Working Memory Manager (Symptom Facts & Patient Vitals)            |
+|  - Production Rule Matcher (IF-THEN Clause Evaluator)                 |
+|  - Certainty Factor Calculator & Diagnostic Ranker                   |
++-----------------------------------+-----------------------------------+
+                                    |
+                                    v
++-----------------------------------+-----------------------------------+
+|                     KNOWLEDGE BASE & PERSISTENCE                      |
+|  - Disease Rules Array (Malaria, Typhoid, Dengue, Pneumonia, COVID)   |
+|  - Symptom Catalog & Medical Guidelines                               |
++-----------------------------------------------------------------------+
+    </div>
 
-  <h3>1.4 Scope of the Project</h3>
-  <p>The scope includes full client-side React 19 web interface, Node.js/Express API server, MongoDB database, five
-    simulation workbenches, and MediMind Clinical AI Suite with EHR report generation.</p>
+    <h3 class="subsection-header">4.2 Major System Modules</h3>
+    <ol>
+      <li><strong>Forward Chaining Diagnostic Module:</strong> Evaluates active symptoms against rule premises to derive confirmed diagnoses.</li>
+      <li><strong>Backward Chaining Verification Module:</strong> Selects a candidate disease goal and queries missing prerequisite symptoms.</li>
+      <li><strong>Vitals & Triage Monitoring Module:</strong> Computes physiological abnormality scores and assigns triage priority.</li>
+      <li><strong>Knowledge Base Management Module:</strong> Provides CRUD operations on clinical rules.</li>
+      <li><strong>EHR Report Generator Module:</strong> Synthesizes diagnostic output into formal medical documentation.</li>
+    </ol>
+  </div>
 
-  <div class="page-break"></div>
+  <!-- PAGE 13: CLINICAL DIAGNOSTIC SYSTEMS & RULE INFERENCE -->
+  <div class="report-page">
+    <h2 class="section-header">CHAPTER 5: AI CLINICAL DIAGNOSTIC SYSTEMS</h2>
 
-  <!-- CHAPTER 2 -->
-  <h2>CHAPTER 2: PROBLEM STATEMENT AND OBJECTIVES</h2>
-  <h3>2.1 Problem Statement</h3>
-  <p>“To design, develop, and deploy an integrated, web-based interactive Artificial Intelligence laboratory simulator
-    and Clinical Decision Support System (NOVA.lab 2.0) under the SPPU 2024 Computer Engineering Pattern that enables
-    students to visually experiment with Intelligent Agents, State Space Traversal, BFS Pathfinder, A* Heuristic Search,
-    and Rule-Based Medical Expert Systems with automated EHR report generation.”</p>
+    <h3 class="subsection-header">5.1 Production Rule System Architecture</h3>
+    <p>
+      MediMind represents medical knowledge using production rules structured as:
+    </p>
+    <div class="diagram-box">
+RULE &lt;Rule_ID&gt;:
+  IF   Symptom_1 IS Present
+  AND  Symptom_2 IS Present
+  AND  Vital_Parameter WITHIN [Min, Max]
+  THEN CONCLUDE Disease = &lt;Disease_Name&gt; (Certainty Factor = CF_Value)
+  AND  RECOMMEND &lt;Clinical_Intervention&gt;
+    </div>
 
-  <h3>2.2 Objectives of the Project</h3>
-  <ol>
-    <li>Implement a Simple Reflex Agent in a 2-room Vacuum Cleaner world operating on state tuples &lt;Location,
-      Status&gt;.</li>
-    <li>Model the 3<sup>n</sup> legal state space of Tower of Hanoi and verify optimal move lower bound (2<sup>n</sup> -
-      1).</li>
-    <li>Implement Breadth-First Search (BFS) using a FIFO queue frontier and demonstrate shortest-path guarantees.</li>
-    <li>Implement A* search for 8-Puzzle, demonstrating Manhattan Distance dominance over Misplaced Tiles.</li>
-    <li>Develop MediMind Clinical Expert System supporting Forward Chaining, Backward Chaining, Vitals processing, live
-      Knowledge Base customization, and EHR Prescription Report generation.</li>
-  </ol>
+    <h3 class="subsection-header">5.2 Forward Chaining vs Backward Chaining</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Feature</th>
+          <th style="width: 37%;">Forward Chaining</th>
+          <th style="width: 38%;">Backward Chaining</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Search Strategy</strong></td>
+          <td>Data-driven (Symptom → Disease)</td>
+          <td>Goal-driven (Disease Hypothesis → Symptom)</td>
+        </tr>
+        <tr>
+          <td><strong>Starting Point</strong></td>
+          <td>Observed patient symptoms & vitals</td>
+          <td>Suspected target disease</td>
+        </tr>
+        <tr>
+          <td><strong>Clinical Role</strong></td>
+          <td>Initial diagnostic discovery & triage</td>
+          <td>Differential confirmation & lab testing</td>
+        </tr>
+        <tr>
+          <td><strong>User Interaction</strong></td>
+          <td>User selects all known symptoms</td>
+          <td>System asks targeted yes/no questions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <div class="page-break"></div>
+  <!-- PAGE 14: KNOWLEDGE BASE ENTITIES -->
+  <div class="report-page">
+    <h2 class="section-header">CHAPTER 6: KNOWLEDGE BASE & DATA MODEL</h2>
 
-  <!-- CHAPTER 3 -->
-  <h2>CHAPTER 3: SOFTWARE REQUIREMENT SPECIFICATION (SRS)</h2>
-  <h3>3.1 Functional Requirements</h3>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 15%; text-align: center;">Req ID</th>
-        <th>Requirement Description</th>
-        <th style="width: 25%;">Target Module</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: center;">FR-01</td>
-        <td>Display all 5 SPPU laboratory assignment cards on a responsive home dashboard.</td>
-        <td>Home Dashboard</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">FR-02</td>
-        <td>Provide an interactive 2-room Vacuum Reflex Agent sandbox.</td>
-        <td>Vacuum Sandbox</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">FR-03</td>
-        <td>Simulate Tower of Hanoi disk moves manually and via recursive auto-solver.</td>
-        <td>Hanoi Sandbox</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">FR-04</td>
-        <td>Visualize BFS maze pathfinding level-by-level using an exposed FIFO queue buffer.</td>
-        <td>BFS Sandbox</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">FR-05</td>
-        <td>Evaluate A* 8-Puzzle tile sliding using f(n) = g(n) + h(n) with Manhattan distance feedback.</td>
-        <td>8-Puzzle Sandbox</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">FR-06</td>
-        <td>Parse patient temperature, heart rate, and SpO2 vitals into working memory symptoms.</td>
-        <td>MediMind Suite</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">FR-07</td>
-        <td>Execute Forward Chaining inference and compute dynamic rule confidence percentages.</td>
-        <td>MediMind Suite</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">FR-08</td>
-        <td>Execute Backward Chaining to prove or disprove clinical hypotheses.</td>
-        <td>MediMind Suite</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">FR-09</td>
-        <td>Allow users to add custom production rules IF {S1, S2} -&gt; Disease live into Knowledge Base.</td>
-        <td>KB Editor</td>
-      </tr>
-      <tr>
-        <td style="text-align: center;">FR-10</td>
-        <td>Generate printable EHR Diagnostic Prescription reports with triage badges and ICD-10 codes.</td>
-        <td>EHR Module</td>
-      </tr>
-    </tbody>
-  </table>
+    <h3 class="subsection-header">6.1 Data Entities</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 20%;">Entity</th>
+          <th style="width: 80%;">Description & Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Patient Record</strong></td><td>Stores patient demographic information (Name, Age, Gender, ID).</td></tr>
+        <tr><td><strong>Symptom Fact</strong></td><td>Represents an observed clinical condition with severity level.</td></tr>
+        <tr><td><strong>Production Rule</strong></td><td>Stores antecedent conditions (IF), disease conclusion (THEN), and CF score.</td></tr>
+        <tr><td><strong>Vital Log</strong></td><td>Stores time-stamped physiological parameters (BP, HR, SpO2, Temp).</td></tr>
+        <tr><td><strong>EHR Document</strong></td><td>Stores finalized clinical diagnostic summaries for archival.</td></tr>
+      </tbody>
+    </table>
 
-  <h3>3.2 Non-Functional Requirements</h3>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">Attribute</th>
-        <th>Specification</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>Usability</b></td>
-        <td>Minimalist Google Labs aesthetic, Times New Roman reporting, clean typography.</td>
-      </tr>
-      <tr>
-        <td><b>Performance</b></td>
-        <td>Instant state transition updates (&lt; 16ms render latency).</td>
-      </tr>
-      <tr>
-        <td><b>Reliability</b></td>
-        <td>Includes client-side fallback assignment data for offline usage.</td>
-      </tr>
-      <tr>
-        <td><b>Maintainability</b></td>
-        <td>Modular React component architecture.</td>
-      </tr>
-    </tbody>
-  </table>
+    <h3 class="subsection-header">6.2 Knowledge Base Rule Catalog Example</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%;">Disease</th>
+          <th style="width: 60%;">Required Symptom Antecedents (IF)</th>
+          <th style="width: 25%;">Certainty Factor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Malaria</strong></td><td>Fever, Chills, Sweating, Headache, Fatigue</td><td>92%</td></tr>
+        <tr><td><strong>Typhoid</strong></td><td>High Fever, Abdominal Pain, Constipation/Diarrhea, Headache</td><td>88%</td></tr>
+        <tr><td><strong>Dengue</strong></td><td>High Fever, Joint Pain, Rash, Retro-orbital Pain</td><td>95%</td></tr>
+        <tr><td><strong>Pneumonia</strong></td><td>Cough, Shortness of Breath, Chest Pain, Fever</td><td>90%</td></tr>
+        <tr><td><strong>COVID-19</strong></td><td>Fever, Dry Cough, Loss of Taste/Smell, Fatigue</td><td>94%</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <div class="page-break"></div>
+  <!-- PAGE 15: IMPLEMENTATION & TESTING -->
+  <div class="report-page">
+    <h2 class="section-header">CHAPTER 7: IMPLEMENTATION & TESTING</h2>
 
-  <!-- CHAPTER 4 & BEYOND SUMMARY -->
-  <h2>CHAPTER 4: SYSTEM ANALYSIS AND ARCHITECTURE DESIGN</h2>
-  <p>The system architecture connects the React 19 frontend with Node.js/Express REST backend and MongoDB Atlas cloud
-    database. Major modules include the Dashboard Module, Simulation Engine, MediMind Clinical Engine, Academic Theory
-    Engine, and Viva Assessment Module.</p>
+    <h3 class="subsection-header">7.1 Technical Stack</h3>
+    <ul>
+      <li><strong>Frontend Framework:</strong> React 19 + Vite (Client Port: 5173/5174)</li>
+      <li><strong>Styling & Icons:</strong> Custom CSS Design System + Lucide React Icons</li>
+      <li><strong>Backend Server:</strong> Node.js + Express (Server Port: 5000)</li>
+      <li><strong>Database Persistence:</strong> MongoDB Atlas + Mongoose Schema Validation</li>
+      <li><strong>Documentation Rendering:</strong> ReactMarkdown + Remark-Math + Rehype-KaTeX</li>
+    </ul>
 
-  <h2>CHAPTER 5: AI ALGORITHMS & CLINICAL INFERENCE ENGINE</h2>
-  <p>Covers mathematical formulations for PEAS Reflex Agents, Hanoi Sierpiński Graphs, BFS FIFO Queue frontiers, A*
-    Manhattan distance evaluation f(n) = g(n) + h(n), and MediMind Forward/Backward Chaining Inference rules.</p>
+    <h3 class="subsection-header">7.2 Clinical Testing & Verification Results</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 20%;">Test Case</th>
+          <th style="width: 45%;">Input Conditions</th>
+          <th style="width: 35%;">Expected & Observed Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>TC-01: Forward Chaining</strong></td>
+          <td>Select: Fever, Chills, Sweating</td>
+          <td>✅ Diagnosed: Malaria (CF: 92%). Status: PASSED</td>
+        </tr>
+        <tr>
+          <td><strong>TC-02: Backward Chaining</strong></td>
+          <td>Target: Dengue. Answer Yes to Joint Pain & Rash</td>
+          <td>✅ Hypothesis Confirmed: Dengue. Status: PASSED</td>
+        </tr>
+        <tr>
+          <td><strong>TC-03: Vital Triage</strong></td>
+          <td>SpO2: 88%, HR: 125 bpm, Temp: 103°F</td>
+          <td>✅ Alert: CRITICAL TRIAGE (Hypoxia + Tachycardia). Status: PASSED</td>
+        </tr>
+        <tr>
+          <td><strong>TC-04: KB Rule Edit</strong></td>
+          <td>Add custom rule for Zika Virus</td>
+          <td>✅ Knowledge Base updated successfully. Status: PASSED</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <h2>CHAPTER 6: DATABASE AND KNOWLEDGE BASE SCHEMA</h2>
-  <p>Details the MongoDB Mongoose Schema for Assignment data, theory manuals, algorithm complexity profiles,
-    dual-language source codes (Python & Java), and viva quiz banks.</p>
+  <!-- PAGE 16: CONCLUSION & REFERENCES -->
+  <div class="report-page">
+    <h2 class="section-header">CHAPTER 8: CONCLUSION & REFERENCES</h2>
 
-  <h2>CHAPTER 7: API ENDPOINTS AND BACKEND IMPLEMENTATION</h2>
-  <p>Describes Express REST API routes (/api/assignments and /api/assignments/:slug), error handlers, CORS
-    configuration, and security practices.</p>
+    <h3 class="subsection-header">8.1 Conclusion</h3>
+    <p>
+      The <strong>MediMind Clinical AI Suite</strong> successfully demonstrates the practical implementation of an artificial intelligence expert diagnostic system. By combining Forward Chaining data-driven inference, Backward Chaining hypothesis verification, physiological vitals monitoring, and Knowledge Base management, the system provides a robust, explainable, and customizable tool for medical diagnostics.
+    </p>
 
-  <h2>CHAPTER 8: GRAPHICAL USER INTERFACE</h2>
-  <p>Features Google Labs-inspired light aesthetic, Times New Roman academic typography, pill buttons, and responsive
-    visualizer grid cards.</p>
+    <h3 class="subsection-header">8.2 Future Enhancements</h3>
+    <ul>
+      <li>Integration with real-time medical IoT vitals sensors for continuous patient monitoring.</li>
+      <li>Integration with DICOM medical image classification models for chest X-ray and CT scan analysis.</li>
+      <li>Support for multi-language clinical interfaces for international deployment.</li>
+    </ul>
 
-  <h2>CHAPTER 9: IMPLEMENTATION DETAILS</h2>
-  <p>Outlines the modular codebase folder structure (client/src/components, client/src/pages, server/index.js, seed.js)
-    and build pipelines.</p>
-
-  <h2>CHAPTER 10: CONCLUSION AND FUTURE SCOPE</h2>
-  <p>Concludes that NOVA.lab 2.0 successfully delivers an interactive AI laboratory platform tailored for SPPU 2024
-    Computer Engineering students. Future extensions include real-time LLM API integration and 3D web visualizers.</p>
-
-  <h2>REFERENCES</h2>
-  <ol>
-    <li>Russell, S. and Norvig, P., <i>Artificial Intelligence: A Modern Approach</i>, 4th Edition, Pearson, 2021.</li>
-    <li>Savitribai Phule Pune University (SPPU), <i>B.E. Computer Engineering Syllabus (2024 Pattern)</i>, AI Lab
-      (310243).</li>
-    <li>React Documentation, <i>React 19 Framework Guide</i>, Available at: https://react.dev/</li>
-    <li>Node.js & Express Documentation, Available at: https://expressjs.com/</li>
-    <li>Shortliffe, E. H., <i>Computer-Based Medical Consultations: MYCIN</i>, Elsevier, 1976.</li>
-  </ol>
+    <h3 class="subsection-header" style="margin-top: 30px;">REFERENCES</h3>
+    <ol style="font-size: 11pt; line-height: 1.6;">
+      <li>Russell, S. and Norvig, P., <em>Artificial Intelligence: A Modern Approach</em>, 4th Edition, Pearson Education, 2021.</li>
+      <li>Shortliffe, E. H., <em>Computer-Based Medical Consultations: MYCIN</em>, Elsevier, 1976.</li>
+      <li>Giarratano, J. and Riley, G., <em>Expert Systems: Principles and Programming</em>, 4th Edition, Thomson Course Technology, 2004.</li>
+      <li>Mozilla Developer Network (MDN), <em>Web Development Documentation – HTML, CSS, React and JavaScript</em>. Available at: https://developer.mozilla.org/</li>
+      <li>React Documentation, <em>React 19 & Vite Development Guide</em>. Available at: https://react.dev/</li>
+      <li>World Health Organization (WHO), <em>Digital Health Guidelines & Clinical Decision Support Systems</em>, 2023.</li>
+    </ol>
+  </div>
 
 </body>
 
