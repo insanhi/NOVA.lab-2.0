@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>NOVA.lab 2.0 — SPPU Mini Project Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 1in;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 12pt;
+      line-height: 1.6;
+      color: #000000;
+      margin: 0;
+      padding: 20px;
+      background: #ffffff;
+    }
+
+    h1 {
+      font-size: 18pt;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 16pt;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 14pt;
+      font-weight: bold;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+
+    h4 {
+      font-size: 12pt;
+      font-weight: bold;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
+    p {
+      text-align: justify;
+      margin-bottom: 12px;
+      text-indent: 0.5in;
+    }
+
+    .no-indent {
+      text-indent: 0;
+    }
+
+    .text-center {
+      text-align: center;
+      text-indent: 0;
+    }
+
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11pt;
+    }
+
+    th,
+    td {
+      border: 1px solid #000000;
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    blockquote {
+      margin: 15px 0 15px 0.5in;
+      font-style: italic;
+    }
+
+    code,
+    pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 10.5pt;
+      background: #f8f8f8;
+      padding: 2px 4px;
+      border: 1px solid #ddd;
+    }
+
+    pre {
+      padding: 10px;
+      overflow-x: auto;
+      text-indent: 0;
+    }
+
+    .signature-table {
+      width: 100%;
+      border: none;
+      margin-top: 50px;
+    }
+
+    .signature-table td {
+      border: none;
+      text-align: center;
+      vertical-align: bottom;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TITLE PAGE -->
+  <div class="text-center">
+    <p class="text-center" style="font-size: 14pt; font-weight: bold; margin-bottom: 5px;">SAVITRIBAI PHULE PUNE
+      UNIVERSITY</p>
+    <p class="text-center" style="font-size: 12pt; margin-bottom: 25px;">A Mini Project Report On</p>
+
+    <h1>NOVA.lab 2.0 — Interactive Artificial Intelligence Laboratory & Clinical Decision Support System Platform</h1>
+
+    <p class="text-center" style="font-size: 11pt; margin-top: 25px;">Submitted in partial fulfillment of the
+      requirements for the degree of</p>
+    <p class="text-center" style="font-size: 13pt; font-weight: bold;">THIRD YEAR OF ENGINEERING (TE Computer
+      Engineering)</p>
+    <p class="text-center" style="font-size: 11pt; font-style: italic;">SPPU 2024 Pattern (Term - I / Term - II)</p>
+
+    <br />
+    <p class="text-center" style="font-weight: bold; margin-bottom: 5px;">Submitted by:</p>
+    <p class="text-center" style="line-height: 1.4;">
+      Gaikwad Vaibhav – 24CO034<br />
+      Hanny Jangir – 24CO040<br />
+      Janhavi Adagale – 24CO052<br />
+      Joshi Aabha – 24CO053
+    </p>
+
+    <br />
+    <p class="text-center" style="font-weight: bold; margin-bottom: 5px;">Under the Guidance of:</p>
+    <p class="text-center" style="font-size: 13pt; font-weight: bold;">Prof. M. G. Ghodekar</p>
+    <p class="text-center">Department of Computer Engineering</p>
+
+    <br />
+    <p class="text-center" style="font-size: 13pt; font-weight: bold;">ALL INDIA SHRI SHIVAJI MEMORIAL
+      SOCIETY’S<br />COLLEGE OF ENGINEERING, PUNE – 411001</p>
+    <p class="text-center" style="font-weight: bold;">Academic Year: 2026-2027</p>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CERTIFICATE -->
+  <div class="text-center">
+    <h2>ALL INDIA SHRI SHIVAJI MEMORIAL SOCIETY’S COLLEGE OF ENGINEERING</h2>
+    <p class="text-center" style="font-weight: bold; font-size: 13pt;">DEPARTMENT OF COMPUTER ENGINEERING</p>
+    <br />
+    <h1>CERTIFICATE</h1>
+  </div>
+
+  <p>This is to certify that <b>Vaibhav Gaikwad (24CO034)</b>, <b>Hanny Jangir (24CO040)</b>, <b>Janhavi Adagale
+      (24CO052)</b>, and <b>Joshi Aabha (24CO053)</b> from Third Year Computer Engineering have successfully completed
+    their mini project work titled <b>“NOVA.lab 2.0 — Interactive Artificial Intelligence Laboratory & Clinical Decision
+      Support System Platform”</b> at AISSMS College of Engineering, Pune, in partial fulfillment of the bachelor’s
+    degree in Computer Engineering under Savitribai Phule Pune University.</p>
+
+  <br /><br /><br />
+  <table class="signature-table">
+    <tr>
+      <td>________________________<br /><b>Prof. M. G. Ghodekar</b><br />Project Guide</td>
+      <td>________________________<br /><b>Dr. D. P. Gaikwad</b><br />Head of Department (HOD)</td>
+      <td>________________________<br /><b>Dr. D. S. Bormane</b><br />Principal, AISSMS COE</td>
+    </tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- APPROVAL -->
+  <h2>MINI PROJECT APPROVAL</h2>
+
+  <p class="no-indent">The Mini Project entitled:</p>
+  <h3 class="text-center">NOVA.lab 2.0 — Interactive Artificial Intelligence Laboratory & Clinical Decision Support
+    System Platform</h3>
+
+  <p class="no-indent">By:</p>
+  <ul style="list-style-type: none; padding-left: 20px;">
+    <li>Gaikwad Vaibhav – 24CO034</li>
+    <li>Hanny Jangir – 24CO040</li>
+    <li>Janhavi Adagale – 24CO052</li>
+    <li>Joshi Aabha – 24CO053</li>
+  </ul>
+
+  <p class="no-indent">Is approved for the degree of <b>Third Year of Engineering in Computer Engineering</b>.</p>
+
+  <br /><br /><br />
+  <table class="signature-table">
+    <tr>
+      <td>________________________<br /><b>Examiner 1</b><br />Name & Signature</td>
+      <td>________________________<br /><b>Examiner 2</b><br />Name & Signature</td>
+    </tr>
+  </table>
+
+  <br /><br />
+  <p class="no-indent"><b>Date:</b><br /><b>Place:</b> AISSMS COE, Pune</p>
+
+  <div class="page-break"></div>
+
+  <!-- ABSTRACT -->
+  <h2>ABSTRACT</h2>
+  <p><b>NOVA.lab 2.0</b> is an interactive, full-stack web-based Artificial Intelligence simulation platform and
+    Clinical Decision Support System (CDSS) designed specifically to meet the academic, practical, and experimental
+    requirements of the Savitribai Phule Pune University (SPPU) 2024 Pattern AI Curriculum. Traditional computer
+    engineering AI laboratories often rely on static code scripts or terminal executions that lack real-time
+    visualization of agent state transitions, frontier memory queue expansion, heuristic evaluation functions, and rule
+    deduction chains. This lack of visual feedback makes complex AI paradigms abstract and difficult to master.</p>
+
+  <p>The <b>NOVA.lab 2.0</b> platform bridges this gap by integrating five interactive simulation modules into a unified
+    Google Labs-inspired web portal:</p>
+  <ol>
+    <li><b>Reflex Agent Vacuum Environment</b>: Simulates the PEAS framework, state perception tuples &lt;Location,
+      Status&gt;, and condition-action production rules with performance metrics.</li>
+    <li><b>Tower of Hanoi State Space Graph</b>: Demonstrates divide-and-conquer recursion, stack activation frames,
+      Sierpiński gasket state graphs, and optimal move proofs (2<sup>n</sup> - 1).</li>
+    <li><b>Breadth-First Search (BFS) Grid Pathfinder</b>: Illustrates FIFO queue frontier expansion, cycle detection
+      via visited sets, and unweighted shortest-path optimality.</li>
+    <li><b>A* Search Algorithm for 8-Puzzle</b>: Visualizes heuristic evaluation f(n) = g(n) + h(n), comparing Manhattan
+      Distance dominance against Misplaced Tiles.</li>
+    <li><b>Part C Mini-Project (MediMind Clinical AI Suite)</b>: A production-grade Rule-Based Expert System supporting
+      Forward Chaining, Goal-Directed Backward Chaining, real-time patient vitals parsing, live Knowledge Base
+      customization, and automated Electronic Health Record (EHR) prescription report generation.</li>
+  </ol>
+
+  <p>Built using React 19, Node.js/Express, MongoDB Mongoose, and REST APIs, NOVA.lab 2.0 provides students and faculty
+    with an end-to-end sandbox, interactive quiz assessments, dual-language source code (Python & Java), and detailed
+    academic theory manuals.</p>
+
+  <div class="page-break"></div>
+
+  <!-- ACKNOWLEDGEMENT -->
+  <h2>ACKNOWLEDGEMENT</h2>
+  <p>We express our sincere gratitude to our project guide, <b>Prof. M. G. Ghodekar</b>, for her valuable guidance,
+    constant encouragement, and insightful feedback throughout the conceptualization and development of <b>NOVA.lab
+      2.0</b>. Her technical direction helped us align our software architecture with SPPU AI lab guidelines.</p>
+
+  <p>We gratefully acknowledge <b>Dr. D. P. Gaikwad</b>, Head of the Department of Computer Engineering, and <b>Dr. D.
+      S. Bormane</b>, Principal of AISSMS College of Engineering, Pune, for providing state-of-the-art laboratory
+    facilities and an inspiring academic environment.</p>
+
+  <p>We extend our deep appreciation to all team members—<b>Hanny Jangir, Vaibhav Gaikwad, Janhavi Adagale, and Joshi
+      Aabha</b>—for their collaborative work, code contributions, and dedication. Finally, we thank our classmates and
+    families for their unwavering encouragement.</p>
+
+  <div class="page-break"></div>
+
+  <!-- TABLE OF CONTENTS -->
+  <h2>TABLE OF CONTENTS</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%; text-align: center;">Sr. No.</th>
+        <th>Chapter / Section Title</th>
+        <th style="width: 15%; text-align: center;">Page No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center;">1</td>
+        <td><b>Abstract</b></td>
+        <td style="text-align: center;">i</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">2</td>
+        <td><b>Acknowledgement</b></td>
+        <td style="text-align: center;">ii</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">3</td>
+        <td><b>Chapter 1: Introduction</b></td>
+        <td style="text-align: center;">1</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">4</td>
+        <td><b>Chapter 2: Problem Statement and Objectives</b></td>
+        <td style="text-align: center;">4</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">5</td>
+        <td><b>Chapter 3: Software Requirement Specification (SRS)</b></td>
+        <td style="text-align: center;">6</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">6</td>
+        <td><b>Chapter 4: System Analysis and Architecture Design</b></td>
+        <td style="text-align: center;">10</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">7</td>
+        <td><b>Chapter 5: AI Algorithms & Clinical Inference Engine</b></td>
+        <td style="text-align: center;">14</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">8</td>
+        <td><b>Chapter 6: Database and Knowledge Base Schema</b></td>
+        <td style="text-align: center;">25</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">9</td>
+        <td><b>Chapter 7: API Endpoints and Backend Architecture</b></td>
+        <td style="text-align: center;">28</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">10</td>
+        <td><b>Chapter 8: Graphical User Interface</b></td>
+        <td style="text-align: center;">30</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">11</td>
+        <td><b>Chapter 9: Implementation Details</b></td>
+        <td style="text-align: center;">32</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">12</td>
+        <td><b>Chapter 10: Conclusion and Future Scope</b></td>
+        <td style="text-align: center;">35</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">13</td>
+        <td><b>References</b></td>
+        <td style="text-align: center;">36</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 1 -->
+  <h2>CHAPTER 1: INTRODUCTION</h2>
+  <h3>1.1 Overview of the Project</h3>
+  <p>Artificial Intelligence (AI) education in modern computer engineering curricula requires a balanced synthesis of
+    theoretical rigor and hands-on simulation. Under the Savitribai Phule Pune University (SPPU) 2024 pattern for Third
+    Year Computer Engineering, students study core AI paradigms including Intelligent Agents, State-Space Search,
+    Uninformed Search, Informed Heuristic Search, and Rule-Based Expert Systems.</p>
+
+  <p><b>NOVA.lab 2.0</b> is an interactive web-based AI laboratory workbench developed to provide intuitive visual
+    simulations for these fundamental algorithms. Rather than reading abstract formulas or running headless command-line
+    scripts, students can interactively control environment percepts, trigger state transitions, observe FIFO queues and
+    priority min-heaps in real time, and test production rules.</p>
+
+  <h3>1.2 Need for the System</h3>
+  <p>Traditional practical laboratory sessions present several challenges to engineering students: Abstract state space
+    concepts, lack of interactive visual feedback during algorithm steps, inconsistent practical manual preparation, and
+    high development complexity for the Part C Mini-Project requirements. NOVA.lab 2.0 solves these issues by delivering
+    an integrated visual platform.</p>
+
+  <h3>1.3 Purpose of the Project</h3>
+  <p>The primary purpose is to provide an open-source, full-stack practical workbench aligned with the SPPU 2024 AI
+    syllabus, enhancing conceptual clarity through step-by-step graphical visualizers, dual-language source code (Python
+    & Java), and interactive viva assessment quizzes.</p>
+
+  <h3>1.4 Scope of the Project</h3>
+  <p>The scope includes full client-side React 19 web interface, Node.js/Express API server, MongoDB database, five
+    simulation workbenches, and MediMind Clinical AI Suite with EHR report generation.</p>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 2 -->
+  <h2>CHAPTER 2: PROBLEM STATEMENT AND OBJECTIVES</h2>
+  <h3>2.1 Problem Statement</h3>
+  <p>“To design, develop, and deploy an integrated, web-based interactive Artificial Intelligence laboratory simulator
+    and Clinical Decision Support System (NOVA.lab 2.0) under the SPPU 2024 Computer Engineering Pattern that enables
+    students to visually experiment with Intelligent Agents, State Space Traversal, BFS Pathfinder, A* Heuristic Search,
+    and Rule-Based Medical Expert Systems with automated EHR report generation.”</p>
+
+  <h3>2.2 Objectives of the Project</h3>
+  <ol>
+    <li>Implement a Simple Reflex Agent in a 2-room Vacuum Cleaner world operating on state tuples &lt;Location,
+      Status&gt;.</li>
+    <li>Model the 3<sup>n</sup> legal state space of Tower of Hanoi and verify optimal move lower bound (2<sup>n</sup> -
+      1).</li>
+    <li>Implement Breadth-First Search (BFS) using a FIFO queue frontier and demonstrate shortest-path guarantees.</li>
+    <li>Implement A* search for 8-Puzzle, demonstrating Manhattan Distance dominance over Misplaced Tiles.</li>
+    <li>Develop MediMind Clinical Expert System supporting Forward Chaining, Backward Chaining, Vitals processing, live
+      Knowledge Base customization, and EHR Prescription Report generation.</li>
+  </ol>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 3 -->
+  <h2>CHAPTER 3: SOFTWARE REQUIREMENT SPECIFICATION (SRS)</h2>
+  <h3>3.1 Functional Requirements</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%; text-align: center;">Req ID</th>
+        <th>Requirement Description</th>
+        <th style="width: 25%;">Target Module</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center;">FR-01</td>
+        <td>Display all 5 SPPU laboratory assignment cards on a responsive home dashboard.</td>
+        <td>Home Dashboard</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">FR-02</td>
+        <td>Provide an interactive 2-room Vacuum Reflex Agent sandbox.</td>
+        <td>Vacuum Sandbox</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">FR-03</td>
+        <td>Simulate Tower of Hanoi disk moves manually and via recursive auto-solver.</td>
+        <td>Hanoi Sandbox</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">FR-04</td>
+        <td>Visualize BFS maze pathfinding level-by-level using an exposed FIFO queue buffer.</td>
+        <td>BFS Sandbox</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">FR-05</td>
+        <td>Evaluate A* 8-Puzzle tile sliding using f(n) = g(n) + h(n) with Manhattan distance feedback.</td>
+        <td>8-Puzzle Sandbox</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">FR-06</td>
+        <td>Parse patient temperature, heart rate, and SpO2 vitals into working memory symptoms.</td>
+        <td>MediMind Suite</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">FR-07</td>
+        <td>Execute Forward Chaining inference and compute dynamic rule confidence percentages.</td>
+        <td>MediMind Suite</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">FR-08</td>
+        <td>Execute Backward Chaining to prove or disprove clinical hypotheses.</td>
+        <td>MediMind Suite</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">FR-09</td>
+        <td>Allow users to add custom production rules IF {S1, S2} -&gt; Disease live into Knowledge Base.</td>
+        <td>KB Editor</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">FR-10</td>
+        <td>Generate printable EHR Diagnostic Prescription reports with triage badges and ICD-10 codes.</td>
+        <td>EHR Module</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>3.2 Non-Functional Requirements</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Attribute</th>
+        <th>Specification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Usability</b></td>
+        <td>Minimalist Google Labs aesthetic, Times New Roman reporting, clean typography.</td>
+      </tr>
+      <tr>
+        <td><b>Performance</b></td>
+        <td>Instant state transition updates (&lt; 16ms render latency).</td>
+      </tr>
+      <tr>
+        <td><b>Reliability</b></td>
+        <td>Includes client-side fallback assignment data for offline usage.</td>
+      </tr>
+      <tr>
+        <td><b>Maintainability</b></td>
+        <td>Modular React component architecture.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- CHAPTER 4 & BEYOND SUMMARY -->
+  <h2>CHAPTER 4: SYSTEM ANALYSIS AND ARCHITECTURE DESIGN</h2>
+  <p>The system architecture connects the React 19 frontend with Node.js/Express REST backend and MongoDB Atlas cloud
+    database. Major modules include the Dashboard Module, Simulation Engine, MediMind Clinical Engine, Academic Theory
+    Engine, and Viva Assessment Module.</p>
+
+  <h2>CHAPTER 5: AI ALGORITHMS & CLINICAL INFERENCE ENGINE</h2>
+  <p>Covers mathematical formulations for PEAS Reflex Agents, Hanoi Sierpiński Graphs, BFS FIFO Queue frontiers, A*
+    Manhattan distance evaluation f(n) = g(n) + h(n), and MediMind Forward/Backward Chaining Inference rules.</p>
+
+  <h2>CHAPTER 6: DATABASE AND KNOWLEDGE BASE SCHEMA</h2>
+  <p>Details the MongoDB Mongoose Schema for Assignment data, theory manuals, algorithm complexity profiles,
+    dual-language source codes (Python & Java), and viva quiz banks.</p>
+
+  <h2>CHAPTER 7: API ENDPOINTS AND BACKEND IMPLEMENTATION</h2>
+  <p>Describes Express REST API routes (/api/assignments and /api/assignments/:slug), error handlers, CORS
+    configuration, and security practices.</p>
+
+  <h2>CHAPTER 8: GRAPHICAL USER INTERFACE</h2>
+  <p>Features Google Labs-inspired light aesthetic, Times New Roman academic typography, pill buttons, and responsive
+    visualizer grid cards.</p>
+
+  <h2>CHAPTER 9: IMPLEMENTATION DETAILS</h2>
+  <p>Outlines the modular codebase folder structure (client/src/components, client/src/pages, server/index.js, seed.js)
+    and build pipelines.</p>
+
+  <h2>CHAPTER 10: CONCLUSION AND FUTURE SCOPE</h2>
+  <p>Concludes that NOVA.lab 2.0 successfully delivers an interactive AI laboratory platform tailored for SPPU 2024
+    Computer Engineering students. Future extensions include real-time LLM API integration and 3D web visualizers.</p>
+
+  <h2>REFERENCES</h2>
+  <ol>
+    <li>Russell, S. and Norvig, P., <i>Artificial Intelligence: A Modern Approach</i>, 4th Edition, Pearson, 2021.</li>
+    <li>Savitribai Phule Pune University (SPPU), <i>B.E. Computer Engineering Syllabus (2024 Pattern)</i>, AI Lab
+      (310243).</li>
+    <li>React Documentation, <i>React 19 Framework Guide</i>, Available at: https://react.dev/</li>
+    <li>Node.js & Express Documentation, Available at: https://expressjs.com/</li>
+    <li>Shortliffe, E. H., <i>Computer-Based Medical Consultations: MYCIN</i>, Elsevier, 1976.</li>
+  </ol>
+
+</body>
+
+</html>

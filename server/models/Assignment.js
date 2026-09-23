@@ -9,7 +9,7 @@ const assignmentSchema = new mongoose.Schema(
     visualizationType: { 
       type: String, 
       required: true,
-      enum: ['vacuum', 'hanoi', 'bfs', 'eight-puzzle', 'expert-system'] 
+      enum: ['vacuum', 'hanoi', 'bfs', 'eight-puzzle', 'expert-system', 'alpha-beta', 'bfs-robot', 'dfs-waterjug', 'eight-queens', 'chatbot'] 
     },
     manual: {
       aim: { type: String, required: true },

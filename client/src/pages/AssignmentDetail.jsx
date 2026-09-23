@@ -10,6 +10,11 @@ import HanoiVisualizer from '../components/HanoiVisualizer';
 import BFSVisualizer from '../components/BFSVisualizer';
 import EightPuzzleVisualizer from '../components/EightPuzzleVisualizer';
 import MedicalExpertVisualizer from '../components/MedicalExpertVisualizer';
+import AlphaBetaVisualizer from '../components/AlphaBetaVisualizer';
+import BFSRobotVisualizer from '../components/BFSRobotVisualizer';
+import WaterJugVisualizer from '../components/WaterJugVisualizer';
+import EightQueensVisualizer from '../components/EightQueensVisualizer';
+import ChatbotVisualizer from '../components/ChatbotVisualizer';
 
 function AssignmentDetail() {
   const { slug } = useParams();
@@ -124,6 +129,11 @@ function AssignmentDetail() {
           {assignment.visualizationType === 'bfs' && <BFSVisualizer />}
           {assignment.visualizationType === 'eight-puzzle' && <EightPuzzleVisualizer />}
           {assignment.visualizationType === 'expert-system' && <MedicalExpertVisualizer />}
+          {assignment.visualizationType === 'alpha-beta' && <AlphaBetaVisualizer />}
+          {assignment.visualizationType === 'bfs-robot' && <BFSRobotVisualizer />}
+          {assignment.visualizationType === 'dfs-waterjug' && <WaterJugVisualizer />}
+          {assignment.visualizationType === 'eight-queens' && <EightQueensVisualizer />}
+          {assignment.visualizationType === 'chatbot' && <ChatbotVisualizer />}
         </div>
       )}
 
